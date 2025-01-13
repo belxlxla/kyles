@@ -1,0 +1,101 @@
+  .main-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  }
+
+  body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  }
+
+  .main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  }
+
+  .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  margin-top: -100px;
+  }
+
+  .introduction {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 2rem;
+  margin-top: 100px;
+  }
+
+  .introduction span {
+  font-weight: 700;
+  }
+
+  .introduction .be {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  }
+
+  .introduction .name {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  }
+
+
+
+
+  .hello-svg svg {
+  stroke-width: 1;
+  max-width: 100%;
+  height: auto;
+  }
+
+  .hello-svg .svg-elem-1 {
+  stroke: none;
+  fill: transparent;
+  animation: svgFill 0.7s ease-in forwards;
+  animation-delay: 0.3s;
+  }
+
+  .hello-svg .svg-elem-2 {
+  stroke: none;
+  fill: transparent;
+  animation: svgFill 0.7s ease-in forwards;
+  animation-delay: 0.8s;
+  }
+
+  .hello-svg .svg-elem-3 {
+  stroke: none;
+  fill: transparent;
+  animation: svgFill 0.7s ease-in forwards;
+  animation-delay: 1.3s;
+  }
+
+  .hello-svg .svg-elem-4 {
+  stroke: none;
+  fill: transparent;
+  animation: svgFill 0.7s ease-in forwards;
+  animation-delay: 1.8s;
+  }
+
+  .hello-svg .svg-elem-5 {
+  stroke: none;
+  fill: transparent;
+  animation: svgFill 0.7s ease-in forwards;
+  animation-delay: 2.3s;
+  }
+
+  @keyframes svgFill {
+  0% {
+  fill: transparent;
+  }
+  100% {
+  fill: #ffffff;
+  }
+  }

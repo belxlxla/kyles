@@ -1,0 +1,181 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 30px;
+    grid-template-areas: 
+    "backend frontend database"
+    "webserver realtime realtime";
+    }
+  
+    .backend { grid-area: backend; }
+    .frontend { grid-area: frontend; }
+    .database { grid-area: database; }
+    .webserver { grid-area: webserver; }
+    .realtime { grid-area: realtime; }
+  
+    .skill-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #1D1E20, #000);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    }
+  
+    .skill-title {
+    color: white;
+    font-size: 48px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 60px;
+    margin-top: 300px;
+    margin-bottom: 160px;
+    }
+  
+    .skill-container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    }
+  
+    .top-box {
+    background: #25252A;
+    border-radius: 20px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    }
+  
+    .section-title {
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 30px;
+    transition: color 0.5s ease-in-out;
+    }
+  
+    .section-title:hover {
+    color: #00FFAE;
+    }
+  
+    .grid-container {
+    display : grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    grid-template-areas:
+    "backend frontend database"
+    "backend webserver realtime";
+    }
+  
+    .grid-item {
+    background: #25252A;
+    border-radius: 20px;
+    padding: 52px;
+    }
+  
+    .backend { grid-area: backend; }
+    .frontend { grid-area: frontend; }
+    .database { grid-area: database; }
+    .webserver { grid-area: webserver; }
+    .realtime { grid-area: realtime; }
+  
+    .icon-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    }
+  
+    .dev-tool .icon-group {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    }
+  
+    .skill-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    }
+  
+    .skill-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    }
+  
+    .tooltip {
+    position: absolute;
+    background: white;
+    border-radius: 20px;
+    padding: 16px 20px;
+    bottom: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    z-index: 800;
+    min-width: max-content;
+    }
+  
+    .tooltip-description {
+    display: inline-block;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 8px;
+    }
+  
+    .tooltip-description-sub {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+    margin-right: 60px;
+    }
+  
+    .tooltip-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    }
+  
+    .tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    }
+    .skill-item:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+    }
+  
+    .skill-item:hover img {
+    transform: translateY(-5px);
+    }
+  
+    .backend .icon-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    }
+  
+    .webserver .icon-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    }
