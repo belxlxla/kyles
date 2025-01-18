@@ -221,3 +221,93 @@
     max-width: 900px;
     }
     }
+
+    @media (max-width: 768px) {
+        .contact-wrapper {
+          height: auto;
+          min-height: 100vh;
+          width: calc(100% - 40px);
+        }
+      
+        .contact-title {
+          font-size: 36px;
+          margin-bottom: 30px;
+          padding: 0 20px;
+        }
+      
+        .contact-form {
+          width: 100%;
+          padding: 0 20px;
+          gap: 40px;
+          margin-top: 40px;
+        }
+      
+        .form-group {
+          gap: 16px;
+          width: 100%;
+        }
+      
+        .form-group label {
+          font-size: 20px;
+        }
+        .email-input-container {
+          flex-direction: column;
+          gap: 20px;
+          width: 100%;
+        }
+      
+        .email-input-container input {
+          width: 100%;
+          padding: 20px 0;
+        }
+      
+        .custom-domain-input {
+          width: 100% !important;
+        }
+      
+        .at-symbol {
+          width: 100%;
+          text-align: left;
+          padding: 10px 0;
+        }
+      
+        .custom-dropdown {
+          width: 100% !important;
+        }
+      
+        .dropdown-header {
+          height: 60px;
+        }
+      
+        .dropdown-options {
+          width: 100%;
+        }
+      
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          width: 100%;
+          font-size: 16px;
+        }
+      
+        .form-group textarea {
+          width: calc(100% - 40px);
+          min-height: 150px;
+          padding: 15px;
+        }
+      
+        .submit-button {
+          height: 60px;
+          font-size: 16px;
+          margin-top: 30px;
+          width: 100%;
+        }
+      
+        .success-message {
+          width: calc(100% - 40px);
+          max-width: 280px;
+          font-size: 16px;
+          padding: 15px 20px;
+          text-align: center;
+        }
+      }

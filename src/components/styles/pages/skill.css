@@ -92,7 +92,15 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
+    justify-content: flex-start;
     }
+
+    .backend .icon-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: flex-start; /* 왼쪽 정렬 */
+      }
   
     .skill-item {
     position: relative;
@@ -179,3 +187,58 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     }
+
+    @media (max-width: 768px) {
+        .skill-container {
+            width: calc(100% - 40px);
+            margin: 0 20px;
+        }
+      
+        .skill-title {
+          font-size: 36px;
+          margin-top: 150px;
+          margin-bottom: 80px;
+        }
+      
+        .top-box {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 30px;
+        }
+      
+        .grid-container {
+          grid-template-columns: 1fr;
+          grid-template-areas: 
+            "backend"
+            "frontend"
+            "database"
+            "webserver"
+            "realtime";
+        }
+      
+        .grid-item {
+          padding: 30px;
+        }
+      
+        .dev-tool .icon-group {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      
+        .backend .icon-group {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      
+        .webserver .icon-group {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      
+        .skill-item {
+          width: 80px;
+          height: 80px;
+        }
+      
+        .section-title {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+      }

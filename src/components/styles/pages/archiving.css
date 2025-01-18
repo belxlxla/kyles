@@ -1,3 +1,4 @@
+/* Archiving.css */
 .archiving-wrapper {
     width: 100%;
     min-height: 100vh;
@@ -157,4 +158,63 @@
     .coming-soon {
     max-width: 590px;
     }
+    }
+
+    @media (max-width: 768px) {
+        .archiving-wrapper {
+          top: 100px; /* 모바일에서는 상단 여백 줄이기 */
+        }
+      
+        .archiving-container {
+          height: auto; /* 컨텐츠에 맞게 높이 조정 */
+          padding-bottom: 50px;
+        }
+      
+        .archiving-title {
+          font-size: 36px;
+          padding-top: 48px;
+          margin-bottom: 48px;
+        }
+      
+        .cards-wrapper {
+          margin-top: 100px;
+          gap: 20px;
+          padding: 0 20px;
+        }
+      
+        .card {
+          top: 200px;
+          width: calc(100% - 40px);
+          padding: 30px;
+          margin: 0 20px;
+        }
+      
+        .card-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+      
+        .card-header img {
+          width: 150px;
+          height: 44px;
+        }
+      
+        .card-header h2 {
+          font-size: 20px;
+        }
+      
+        .card-description {
+          font-size: 14px;
+        }
+      
+        .card-list li {
+          font-size: 16px;
+        }
+      
+        .arrow {
+          bottom: 30px;
+          right: 30px;
+          font-size: 20px;
+        }
     }
