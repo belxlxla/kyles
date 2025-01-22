@@ -197,7 +197,7 @@ return (
             <div className="card-content">
               <div className="period">{project.period}</div>
               <h2 className="card-title">{project.title}</h2>
-              <p className="card-description">{project.description}</p>
+              <p className="pj-card-description">{project.description}</p>
 
               <div className="tasks-section">
                 <h3 className="tasks-title">[담당 업무]</h3>

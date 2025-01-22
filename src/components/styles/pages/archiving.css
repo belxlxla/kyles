@@ -4,7 +4,7 @@
     min-height: 100vh;
     background-color: #000;
     position: relative;
-    top: 200px;
+    padding-top:  200px;
     }
   
     .archiving-container {
@@ -34,7 +34,7 @@
     .archiving-title {
     position: relative;
     color: white;
-    font-size: 48px;
+    font-size: 34px;
     font-family: 'Montserrat', sans-serif;
     padding-top: 96px;
     margin-bottom: 96px;
@@ -44,12 +44,12 @@
     .cards-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     padding: 0 20px;
     margin-top: 200px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
     justify-content: center;
     z-index: 2;
     }
@@ -59,7 +59,7 @@
     background: white;
     border-radius: 20px;
     padding: 40px;
-    width: 590px;
+    width: 500px;
     position: relative;
     transition: transform 0.3s ease;
     }
@@ -84,7 +84,7 @@
   
     .card-header h2 {
     color: black;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     font-family: 'Pretendard', sans-serif;
     }
@@ -93,16 +93,17 @@
     display: block;
     color: #4B9CFF;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 10px;
     font-family: 'Montserrat', sans-serif;
     }
   
     .card-description {
-    color: black;
-    font-size: 16px;
-    margin-bottom: 20px;
+    color: #000;
+    font-size: 22px;
+    margin-bottom: 10px;
     font-family: 'Pretendard', sans-serif;
+    font-weight: bold;
     }
   
     .card-list {
@@ -113,7 +114,7 @@
   
     .card-list li {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 10px;
     padding-left: 12px;
     letter-spacing: -0.03rem;
@@ -145,7 +146,7 @@
   
     .coming-soon {
     width: 100%;
-    max-width: 1290px;
+    max-width: 1100px;
     margin-top: 30px;
     }
   
@@ -159,7 +160,6 @@
     max-width: 590px;
     }
     }
-
     @media (max-width: 768px) {
         .archiving-wrapper {
           top: 100px; /* 모바일에서는 상단 여백 줄이기 */

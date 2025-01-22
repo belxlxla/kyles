@@ -17,7 +17,7 @@ body, html {
     .projects-title {
     text-align: center;
     color: white;
-    font-size: 48px;
+    font-size: 34px;
     font-family: 'Montserrat', sans-serif;
     margin-top: 200px;
     margin-top: 300px;
@@ -27,7 +27,7 @@ body, html {
     }
 
     .slider-container {
-    width: 1400px;
+    width: 1200px;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -35,7 +35,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible; 
+    overflow: visible;
+    margin-bottom: 120px;
     }
 
     .nav-button {
@@ -72,7 +73,7 @@ body, html {
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     transform-origin: center;
-    width: 1400px;
+    width: 1200px;
     height: 620px;
     }
 
@@ -139,7 +140,7 @@ body, html {
     margin-bottom: 16px;
     }
 
-    .card-description {
+    .pj-card-description {
     font-family: 'Pretendard', sans-serif;
     color: #333;
     height: 3.2em;;
