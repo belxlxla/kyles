@@ -357,10 +357,14 @@ body, html {
       
         .tasks-title {
           font-size: 16px;
+          padding-left: 5px;
+          padding-right: 20px; 
         }
       
         .tasks-list p {
           font-size: 14px;
+          padding-left: 5px;
+          padding-right: 20px; 
         }
       
         .info-row {
@@ -392,3 +396,107 @@ body, html {
           opacity: 0;
         }
       }
+
+      @media (max-width: 480px) {
+        .projects-wrapper {
+            margin-top: 100px;
+            padding: 100px 0;
+        }
+      
+        .projects-title {
+            font-size: 24px;
+            margin-bottom: 120px;
+            color: #fff;
+        }
+      
+        .slider-container {
+            margin: 440px auto;
+        }
+      
+        .nav-button {
+            top: 25%;
+        }
+      
+        .nav-button img {
+            width: 80px;
+            height: 80px;
+        }
+      
+        .project-card {
+            width: calc(100% - 30px);
+            margin: 0 30px;
+        }
+      
+        .card-image {
+            height: 360px;
+        }
+      
+        .progress {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+      
+        .card-content {
+          padding: 15px 20px;
+        }
+      
+        .period {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+      
+        .card-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            padding-right: 40px; 
+        }
+      
+        .pj-card-description {
+            font-size: 14px;
+            padding-right: 40px; 
+            max-height: 400px;
+        }
+      
+        .tasks-section {
+            margin-bottom: 16px;
+        }
+      
+        .tasks-list {
+            height: 120px;
+            padding-right: 20px;
+        }
+      
+        .tasks-title {
+            font-size: 16px;
+        }
+      
+        .tasks-list p {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+      
+        .info-row {
+            margin-bottom: 6px;
+        }
+      
+        .label {
+            width: 70px;
+            font-size: 12px;
+        }
+      
+        .value {
+            font-size: 12px;
+        }
+      
+        .tech-stack {
+            margin-top: 14px;
+            padding-right: 14px;
+            gap: 8px;
+            max-height: 80px;
+        }
+      
+        .tech-tag {
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+     }

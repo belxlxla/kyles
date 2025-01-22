@@ -311,3 +311,87 @@
           text-align: center;
         }
       }
+
+      @media (max-width: 480px) {
+        .contact-wrapper {
+            padding: 40px 15px;
+            width: calc(100% - 30px);
+        }
+      
+        .contact-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+      
+        .contact-form {
+            padding: 0 15px;
+            gap: 30px;
+            margin-top: 30px;
+        }
+      
+        .form-group {
+            gap: 12px;
+        }
+      
+        .form-group label {
+            font-size: 16px;
+        }
+      
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-size: 14px;
+            padding: 15px 0;
+        }
+      
+        .email-input-container {
+            gap: 15px;
+        }
+      
+        .email-input-container input {
+            padding: 15px 0;
+        }
+      
+        .at-symbol {
+            padding: 8px 0;
+        }
+      
+        .custom-dropdown {
+            width: 100%;
+        }
+      
+        .dropdown-header {
+            height: 50px;
+            font-size: 14px;
+        }
+      
+        .dropdown-header::after {
+            width: 20px;
+            height: 12px;
+        }
+      
+        .dropdown-option {
+            padding: 15px;
+            font-size: 14px;
+        }
+      
+        .form-group textarea {
+            min-height: 120px;
+            padding: 12px;
+            width: calc(100% - 24px);
+        }
+      
+        .submit-button {
+            height: 50px;
+            font-size: 14px;
+            margin-top: 20px;
+            border-radius: 15px;
+        }
+      
+        .success-message {
+            max-width: 250px;
+            font-size: 14px;
+            padding: 12px 15px;
+        }
+     }

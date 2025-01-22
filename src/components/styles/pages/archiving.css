@@ -162,11 +162,11 @@
     }
     @media (max-width: 768px) {
         .archiving-wrapper {
-          top: 100px; /* 모바일에서는 상단 여백 줄이기 */
+          top: 100px;
         }
       
         .archiving-container {
-          height: auto; /* 컨텐츠에 맞게 높이 조정 */
+          height: auto;
           padding-bottom: 50px;
         }
       
@@ -218,3 +218,59 @@
           font-size: 20px;
         }
     }
+
+    @media (max-width: 480px) {
+      .archiving-wrapper {
+          padding-top: 100px;
+      }
+    
+      .archiving-title {
+          font-size: 24px;
+          padding-top: 30px;
+          margin-bottom: 30px;
+      }
+    
+      .cards-wrapper {
+          margin-top: 60px;
+          gap: 15px;
+          padding: 0 15px;
+      }
+    
+      .card {
+          top: 100px;
+          padding: 20px;
+          width: calc(100% - 30px);
+          margin: 0 15px;
+      }
+    
+      .card-header img {
+          width: 120px;
+          height: 35px;
+      }
+    
+      .card-header h2 {
+          font-size: 16px;
+      }
+    
+      .card-link {
+          font-size: 12px;
+          margin-bottom: 8px;
+      }
+    
+      .card-description {
+          font-size: 16px;
+          margin-bottom: 8px;
+      }
+    
+      .card-list li {
+          font-size: 14px;
+          margin-bottom: 8px;
+          padding-left: 10px;
+      }
+    
+      .arrow {
+          bottom: 20px;
+          right: 20px;
+          font-size: 16px;
+      }
+   }

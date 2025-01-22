@@ -71,3 +71,50 @@
     .description strong {
     font-weight: 600;
     }
+
+    /* bella : 모바일 */
+    @media (max-width: 768px) {
+        .title-wrapper {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+    
+        .description {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    
+        .description p + p {
+            margin-top: 6px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 375px;
+            height: 812px;
+            object-fit: cover;
+            }
+
+        .title-wrapper {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .intro-text {
+            width: calc(100% - 40px);
+            margin: 0 auto;
+        }
+    
+        .description {
+            font-size: 14px;
+            padding: 0 20px;
+        }
+    
+        .be, .dev {
+            margin-right: 4px; 
+        }
+    }

@@ -190,3 +190,74 @@
           margin: 0 auto;
         }
       }
+
+      @media (max-width: 480px) {
+        .career-wrapper {
+            padding: 10px 0;
+            margin-bottom: 60px;
+        }
+      
+        .career-title {
+            font-size: 24px;
+            margin-top: 300px;
+            margin-bottom: 30px;
+        }
+      
+        .career-container {
+            padding: 0 15px;
+        }
+      
+        .career-item {
+            margin-top: 60px;
+            gap: 30px;
+        }
+      
+        .career-logo {
+            max-width: 140px;
+            margin-top: 60px;
+        }
+      
+        .career-main-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+      
+        .career-sub-title {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+      
+        .career-period {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+      
+        .career-description {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+      
+        .career-description p {
+            margin-bottom: 20px;
+        }
+      
+        .career-divider {
+            width: calc(100% - 30px);
+            margin: 20px 0;
+        }
+      
+        .career-status {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+      
+        .career-section {
+            width: calc(100% - 30px);
+            margin-bottom: 20px;
+        }
+      
+        .career-content-wrap {
+            width: calc(100% - 30px);
+            margin: 0 auto;
+        }
+     }

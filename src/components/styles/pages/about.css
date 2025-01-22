@@ -184,30 +184,110 @@
         text-decoration: underline;
         }
       
-        @media (max-width: 768px) {
+      /* bella : 모바일 */
+      @media (max-width: 768px) {
         #about .about-wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-        margin-bottom: 100px;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
         }
-      
+    
         #about .profile-section {
-        max-width: 100%;
+            max-width: 250px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 0;
         }
-      
+    
+        #about .profile-image {
+            width: 100%;
+            max-width: 250px;
+            display: block;
+            margin: 0 auto;
+        }
+        
         #about .content-section {
-        width: 100%;
-        text-align: center;
+            width: 100%;
+            padding: 0 20px;
         }
-      
+     
+        #about .about-title {
+            height: 50px;
+            margin-bottom: 30px;
+        }
+     
+        #about .divider {
+            margin-bottom: 60px;
+        }
+     
+        #about .info-list {
+            gap: 30px;
+        }
+     
         #about .info-item {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
+            font-size: 20px;
+            gap: 12px;
+            align-items: flex-start;
+            flex-direction: row;
+            flex-wrap: wrap;
         }
-      
-        #about .separator {
-        display: none;
+     
+        #about .label {
+            min-width: 60px;
         }
+     }
+     
+     @media (max-width: 480px) {
+        #about.about-container {
+            width: 415px;
+            min-height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            margin: 0 auto; 
+            position: relative; 
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 80px;
+            margin-bottom: 80px;
         }
+
+        #about .profile-section {
+            max-width: 250px;
+            width: 100%;
+        }
+
+        #about .profile-image {
+            max-width: 250px;
+        }
+     
+        #about .about-title {
+            height: 50px;
+            margin-bottom: 30px;
+        }
+     
+        #about .divider {
+            margin-bottom: 40px;
+        }
+     
+        #about .info-list {
+            gap: 25px;
+        }
+     
+        #about .info-item {
+            font-size: 16px;
+            gap: 8px;
+        }
+     
+        #about .label {
+            min-width: 50px;
+        }
+     
+        #about .contact-links {
+            gap: 6px;
+        }
+     }
