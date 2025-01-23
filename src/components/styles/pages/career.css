@@ -118,9 +118,14 @@
         .career-wrapper {
           padding: 40px 0;
           margin-bottom: 100px;
-          margin-top: 0;
+          margin-top: 60px;
           min-height: auto;
+          padding: 40px 0;
         }
+
+        .project-section + .career-wrapper {
+          margin-top: 100px;
+      }
       
         .career-title {
             font-size: 36px;

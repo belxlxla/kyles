@@ -18,17 +18,13 @@
     }
 
     img {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        pointer-events: none;
-        -webkit-user-drag: none; 
-        -khtml-user-drag: none; 
-        -moz-user-drag: none; 
-        -o-user-drag: none; 
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+        pointer-events: none !important;
+        -webkit-user-drag: none !important;
+        touch-action: none !important;
+        -webkit-tap-highlight-color: transparent !important;
     }
 
     text, textarea, input, button, a, [role="button"] {
