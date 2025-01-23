@@ -1,5 +1,5 @@
 // App.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/layout/header';
 import Main from './components/pages/main';
@@ -17,6 +17,29 @@ import Chat from './components/pages/chat';
 import Editor from './components/pages/editor';
 import Calendar from './components/pages/calendar';
 import AI from './components/pages/ai';
+
+function App() {
+  useEffect(() => {
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    
+    const preventSave = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('touchstart', preventSave, { passive: false });
+      img.addEventListener('contextmenu', preventSave);
+    });
+
+    return () => {
+      document.removeEventListener('contextmenu', preventSave);
+      document.querySelectorAll('img').forEach(img => {
+        img.removeEventListener('touchstart', preventSave);
+        img.removeEventListener('contextmenu', preventSave);
+      });
+    };
+  }, []);
 
 function App() {
  return (
@@ -102,6 +125,7 @@ function App() {
      />
    </Routes>
  );
+}
 }
 
 export default App;
