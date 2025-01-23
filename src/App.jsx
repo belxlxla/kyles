@@ -20,21 +20,29 @@ import AI from './components/pages/ai';
 
 function App() {
   useEffect(() => {
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    const preventContextMenu = (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    };
+    
+    document.addEventListener('contextmenu', preventContextMenu);
     
     const preventSave = (e) => {
-      e.preventDefault();
-      return false;
+      if (!e.target.closest('.nav-button')) {
+        e.preventDefault();
+        return false;
+      }
     };
-
-    document.querySelectorAll('img').forEach(img => {
+  
+    document.querySelectorAll('img:not(.nav-button img)').forEach(img => {
       img.addEventListener('touchstart', preventSave, { passive: false });
       img.addEventListener('contextmenu', preventSave);
     });
-
+  
     return () => {
-      document.removeEventListener('contextmenu', preventSave);
-      document.querySelectorAll('img').forEach(img => {
+      document.removeEventListener('contextmenu', preventContextMenu);
+      document.querySelectorAll('img:not(.nav-button img)').forEach(img => {
         img.removeEventListener('touchstart', preventSave);
         img.removeEventListener('contextmenu', preventSave);
       });

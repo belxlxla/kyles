@@ -40,14 +40,15 @@
   }
 
   .nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 20;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer !important;
+    padding: 10px;
+    z-index: 20;
+    pointer-events: auto !important;
   }
 
   .nav-button:first-child {
@@ -59,10 +60,10 @@
   }
 
   .nav-button img {
-  opacity: 0.8;
-  width: 100px;
-  height: 100px;
-  pointer-events: auto !important;
+    opacity: 0.8;
+    width: 100px;
+    height: 100px;
+    pointer-events: none !important; 
   }
 
   .project-card {
