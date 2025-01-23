@@ -1,15 +1,34 @@
 // SecondSection.jsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react'; 
 import '../styles/pages/secondSection.css';
 import backgroundVideo from '../../assets/background.mp4';
 
 const SecondSection = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playsInline = true;
+      videoRef.current.play().catch(error => {
+        console.log("Video autoplay failed:", error);
+      });
+    }
+  }, []);
+
   return (
-  <div id="second-section" className="second-section-container">
-    <section className="second-section">
-      <video className="background-video" autoPlay loop muted>
-        <source src={backgroundVideo} type="video/mp4" />
-      </video>
+    <div id="second-section" className="second-section-container">
+      <section className="second-section">
+        <video 
+          ref={videoRef}
+          className="background-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          webkit-playsinline="true"
+          >
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
       <div className="content-wrapper">
         <div className="intro-text">
           <div className="title-wrapper">

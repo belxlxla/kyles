@@ -2,9 +2,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     }
   
     body {
-    background-color: #000;
-    color: #fff;
+        background-color: #000;
+        color: #fff;
+        overscroll-behavior: none;
     }
+
+    img {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+        -webkit-user-drag: none; 
+        -khtml-user-drag: none; 
+        -moz-user-drag: none; 
+        -o-user-drag: none; 
+    }
+
+    text, textarea, input, button, a, [role="button"] {
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+        pointer-events: auto;
+        cursor: pointer;
+        -webkit-touch-callout: default;
+    }
+
+    .hamburger-button img {
+        pointer-events: auto;
+    }
+
+    button, 
+        a, 
+        [role="button"],
+        input,
+        select,
+        textarea {
+            -webkit-touch-callout: default;
+            pointer-events: auto;
+            cursor: pointer;
+        }

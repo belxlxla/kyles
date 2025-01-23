@@ -70,11 +70,13 @@ const Header = () => {
       ]
     : [];
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    const toggleMobileMenu = () => {
+      requestAnimationFrame(() => {
+          setIsMobileMenuOpen(!isMobileMenuOpen);
+      });
   };
 
-  return (
+    return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMobile ? 'mobile' : ''}`}>
       <nav className="nav-container">
         {isMobile && (
@@ -88,22 +90,22 @@ const Header = () => {
         </div>
 
         <ul className={`nav-links ${isMobile ? 'mobile' : ''} ${isMobileMenuOpen ? 'open' : ''}`}>
-          {menuItems.map((item, index) => (
-            <li key={index}>
-              <ScrollLink
-                activeClass="active"
-                to={item.to}
-                spy={true}
-                smooth={true}
-                offset={90}
-                duration={200}
-                onClick={() => isMobile && setIsMobileMenuOpen(false)}
-              >
-                {item.text}
-                {item.hasB && <b>{item.bText}</b>}
-              </ScrollLink>
-            </li>
-          ))}
+            {menuItems.map((item, index) => (
+              <li key={index} style={{"--index": index}}>  {/* 각 아이템에 인덱스 변수 추가 */}
+                <ScrollLink
+                  activeClass="active"
+                  to={item.to}
+                  spy={true}
+                  smooth={true}
+                  offset={90}
+                  duration={200}
+                  onClick={() => isMobile && setIsMobileMenuOpen(false)}
+                >
+                  {item.text}
+                  {item.hasB && <b>{item.bText}</b>}
+                </ScrollLink>
+              </li>
+            ))}
           {location.pathname === '/' && (
             <li onClick={handleFunctionClick}>
               <span className="nav-links a"><b>Function</b></span>
