@@ -1,315 +1,244 @@
-.payments-wrapper {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 180px;
-    margin-bottom: 200px;
-    align-items: center;
- }
- 
- .payments-container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
- }
- 
- .navigation-container {
-    width: 100%;
-    margin-bottom: 40px;
- }
- 
- .tab-navigation {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 0;
- }
- 
- .tab {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    color: #3B3857;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    white-space: nowrap;
- }
- 
- .tab:hover,
- .tab.active,
- .tab:visited,
- .tab:link {
-   color: #3B3857 !important;
-   text-decoration: none;
- }
- 
- .tab:hover {
-    color: #3B3857;
-    font-weight: 600;
- }
- 
- .tab.active {
-    color: #3B3857;
-    font-weight: 600;
- }
- 
- .nav-border {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, #000, #000);
- }
- 
- .description {
-    margin-bottom: 20px;
- }
- 
- .description h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    color: #3B3857;
-    margin-bottom: 10px;
- }
- 
- .description p {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 14px;
-    line-height: 1;
-    color: #3B3857;
-    margin-bottom: 10px;
- }
- 
- .product-box {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 140px;
-    box-shadow: 0 0 20px #F4F4F4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: background-color 0.3s ease-in-out;
- }
- 
- .product-box h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 28px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #3B3857;
- }
- 
- .product-content {
-    width: 370px;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
- }
- 
- .product-info {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
- }
- 
- .category {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 12px;
-    color: #666;
- }
+   /* Payments.css */
+   .product-content {
+   width: 370px;
+   position: relative;
+   display: flex;
+   align-items: flex-start;
+   }
 
- .product-layout {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-  }
- 
- .product-header {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 30px;
- }
+   .product-info {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   opacity: 1;
+   transition: opacity 0.4s ease;
+   }
 
- .product-image-container {
-    width: 124px;
-    height: 149px;
-  }
- 
- .product-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
- }
- 
- .product-details {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
- }
- 
- .product-name {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 18px;
-    color: #333;
-  }
- 
- .price-section {
-    margin-bottom: 20px;
- }
- 
- .original-price {
-    font-family: 'Montserrat', sans-serif;
-    color: #666;
-    text-decoration: line-through;
-  }
- 
- .price-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    opacity: 1;
-    transition: opacity 0.4s ease;
- }
+   .product-info.fadeOut {
+   opacity: 0;
+   }
 
- .product-info.fadeOut {
-    opacity: 0;
-  }
+   .product-info.fadeIn {
+   opacity: 1;
+   }
 
-  .product-info.fadeIn {
-    opacity: 1;
-  }
-  
- .price-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
- 
- .discount-rate {
-    font-family: 'Montserrat', sans-serif;
-    color: #FF4444;
-    font-size: 24px;
-    font-weight: bold;
- }
- 
- .final-price {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-  }
- 
- .rating {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
- }
- 
- .rating img {
-    width: 16px;
-    height: 16px;
- }
- 
- .rating span {
-    font-family: 'Montserrat', sans-serif;
-    color: #3B3857 !important;
- }
- 
- .rating .reviews {
-    color: #666;
- }
- 
- .benefits {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
- }
+   .category {
+   font-family: 'Pretendard', sans-serif;
+   font-size: 12px;
+   color: #666;
+   }
 
- .benefit-header {
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #3B3857;
-  }
- 
- .benefits-title {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 14px;
-    color: #3B3857 !important;
-    margin-bottom: 12px;
- }
- 
- .benefit-content {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 14px;
-    color: #3B3857 !important;
-    margin-bottom: 4px;
- }
+   .product-layout {
+   display: flex;
+   gap: 20px;
+   width: 100%;
+   }
 
- 
- .delivery-info {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 14px;
-    color: #666 !important;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    color: #3B3857;
- }
+   .product-image-container {
+   width: 124px;
+   height: 149px;
+   }
 
- .payment-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
- 
- .pay-button {
-    width: 370px;
-    height: 50px;
-    padding: 0;
-    border: none;
-    cursor: pointer;
-}
- 
- .pay-button img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
- }
- 
- .slide-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 2;
-    opacity: 1;
-    transition: opacity 0.4s ease;
-}
+   .product-image {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   }
 
-.slide-button.fadeOut {
-    opacity: 0;
-  }
- 
-.slide-button.left {
-    left: -100px;
-}
- 
-.slide-button.right {
-    right: -100px;
-}
- 
- .slide-button img {
-    width: 50px;
-    height: 50px;
- }
- 
- .slide-button:hover {
-    transform: translateY(-50%) scale(1.1);
-    transition: transform 0.3s ease;
- }
+   .product-details {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   }
+
+   .product-name {
+   font-family: 'Pretendard', sans-serif;
+   font-size: 18px;
+   color: #333;
+   }
+
+   .original-price {
+   font-family: 'Montserrat', sans-serif;
+   color: #666;
+   text-decoration: line-through;
+   }
+
+   .price-row {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   }
+
+   .discount-rate {
+   font-family: 'Montserrat', sans-serif;
+   color: #FF4444;
+   font-size: 24px;
+   font-weight: bold;
+   }
+
+   .final-price {
+   font-family: 'Montserrat', sans-serif;
+   font-size: 24px;
+   font-weight: bold;
+   color: #000;
+   }
+
+   .rating {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   }
+
+   .rating img {
+   width: 16px;
+   height: 16px;
+   }
+
+   .rating span {
+   font-family: 'Montserrat', sans-serif;
+   color: #3B3857;
+   }
+
+   .rating .reviews {
+   color: #666;
+   }
+
+   .benefits-section {
+   margin-top: 20px;
+   padding-top: 20px;
+   border-top: 1px solid #eee;
+   }
+
+   .benefit-header {
+   font-weight: bold;
+   margin-bottom: 10px;
+   color: #3B3857;
+   font-family: 'Pretendard', sans-serif;
+   font-size: 14px;
+   }
+
+   .benefit-content {
+   font-family: 'Pretendard', sans-serif;
+   font-size: 14px;
+   color: #3B3857;
+   margin-bottom: 4px;
+   }
+
+   .delivery-section {
+   margin-top: 20px;
+   padding-top: 20px;
+   border-top: 1px solid #eee;
+   }
+
+   .delivery-info {
+   font-family: 'Pretendard', sans-serif;
+   font-size: 14px;
+   color: #666;
+   }
+
+   .payment-button-container {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+   }
+
+   .pay-button {
+   width: 370px;
+   height: 50px;
+   padding: 0;
+   border: none;
+   cursor: pointer;
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none;
+   outline: none;
+   }
+
+   .pay-button img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: 10px;
+   }
+
+   .slide-button {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   background: none;
+   border: none;
+   cursor: pointer;
+   z-index: 2;
+   opacity: 1;
+   transition: opacity 0.4s ease;
+   -webkit-tap-highlight-color: transparent;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   user-select: none;
+   outline: none;
+   }
+
+   .slide-button.fadeOut {
+   opacity: 0;
+   }
+
+   .slide-button.left {
+   left: -100px;
+   }
+
+   .slide-button.right {
+   right: -100px;
+   }
+
+   .slide-button img {
+   width: 50px;
+   height: 50px;
+   }
+
+   .slide-button:hover {
+   transform: translateY(-50%) scale(1.1);
+   transition: transform 0.3s ease;
+   }
+
+   @media (max-width: 480px) {
+   .product-content {
+   width: 265px;
+   }
+
+   .product-image-container {
+   width: 100px;
+   height: 120px;
+   }
+
+   .product-details {
+   gap: 8px;
+   }
+
+   .product-name {
+   font-size: 16px;
+   }
+
+   .discount-rate,
+   .final-price {
+   font-size: 20px;
+   }
+
+   .pay-button {
+   width: 300px;
+   }
+
+   .slide-button.left {
+   left: -50px;
+   }
+
+   .slide-button.right {
+   right: -50px;
+   }
+
+   .slide-button img {
+   width: 30px;
+   height: 30px;
+   }
+   }

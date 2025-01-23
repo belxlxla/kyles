@@ -52,6 +52,7 @@ const Header = () => {
   };
 
   const handleFunctionClick = () => {
+    setIsMobileMenuOpen(false);
     navigate('/login');
     window.scrollTo({
       top: 0,
@@ -79,11 +80,11 @@ const Header = () => {
     return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMobile ? 'mobile' : ''}`}>
       <nav className="nav-container">
-        {isMobile && (
-          <button className="hamburger-button" onClick={toggleMobileMenu}>
-            <img src={Menu} alt="Menu" />
-          </button>
-        )}
+            {isMobile && !functionalPaths.includes(location.pathname) && (
+        <button className="hamburger-button" onClick={toggleMobileMenu}>
+          <img src={Menu} alt="Menu" />
+        </button>
+      )}
         
         <div className="logo" onClick={handleLogoClick}>
           <b>Kyle's</b><span> Portfolio</span>

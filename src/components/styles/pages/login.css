@@ -1,4 +1,5 @@
-.login-wrapper {
+    /* Login.css */
+    .login-wrapper {
     width: 100%;
     min-height: 100vh;
     background-color: #fff;
@@ -9,26 +10,33 @@
     margin-bottom: 200px;
     align-items: center;
     }
-  
+
     .login-container {
     width: 100%;
     max-width: 1200px;
     display: flex;
     flex-direction: column;
     }
-  
+
     .navigation-container {
     width: 100%;
     margin-bottom: 40px;
     }
-  
+
     .tab-navigation {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     padding: 20px 0;
+    gap: 24px;
     }
-  
+
+    .tab-navigation::-webkit-scrollbar {
+    display: none;
+    }
+
     .tab {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
@@ -37,8 +45,9 @@
     text-decoration: none;
     transition: all 0.3s ease;
     white-space: nowrap; 
+    padding: 0 4px;
     }
-  
+
     .tab:hover,
     .tab.active,
     .tab:visited,
@@ -46,40 +55,40 @@
     color: #3B3857 !important;
     text-decoration: none;
     }
-  
+
     .tab:hover {
     color: #3B3857;
     font-weight: 600;
     }
-  
+
     .tab.active {
     color: #3B3857;
     font-weight: 600;
     }
-  
+
     .nav-border {
     width: 100%;
     height: 1px;
     background: linear-gradient(to right, #000, #000);
     }
-  
+
     .content-container {
     display: flex;
     flex-direction: column;
     gap: 34px;
     }
-  
+
     .description {
     margin-bottom: 20px;
     }
-  
+
     .description h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     margin-bottom: 10px;
     color: #3B3857;
     }
-  
+
     .description p {
     font-family: 'Pretendard', sans-serif;
     font-size: 14px;
@@ -87,41 +96,62 @@
     color: #3B3857;
     margin-bottom: 10px;
     }
-  
+
     .login-box {
     background-color: #fff;
     border-radius: 10px;
-    padding: 140px;
+    padding: 40px 20px;
     box-shadow: 0 0 20px #F4F4F4;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: background-color 0.3s ease-in-out;
     }
-  
+
+    .login-box img,
+    .social-buttons img,
+    .social-buttons button,
+    .auto-login .custom-checkbox,
+    .eye-button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+    }
+
+    .tab {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+    }
+
     .login-box:hover {
     color: #3B3857;
     }
-  
+
     .login-box h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 32px;
     margin-bottom: 40px;
     color: #3B3857;
     }
-  
+
     .input-container {
-    width: 340px;
+    width: 100%;
+    max-width: 340px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
     }
-  
+
     .input-container input {
     color: #3B3857;
     }
-  
+
     .input-container input[type="text"],
     .input-container input[type="password"] {
     width: 400px;
@@ -134,24 +164,24 @@
     font-weight: 400;
     color: #3B3857 !important;
     }
-  
+
     .password-input {
     position: relative;
     }
-  
+
     .input-container input::placeholder {
     color: #c8c8c8;
     }
-  
+
     .input-container input.filled {
     border-color: #3B3857;
     }
-  
+
     .input-container input:focus {
     border-color: #3B3857;
     outline: none;
     }
-  
+
     .eye-button {
     position: absolute;
     right: 20px;
@@ -161,7 +191,7 @@
     border: none;
     cursor: pointer;
     }
-  
+
     .login-button {
     width: 436px;
     height: 48px;
@@ -175,46 +205,46 @@
     margin-top: 10px;
     transition: background-color 0.3s ease-in-out;
     }
-  
+
     .login-button.active {
     background-color: #3B3857;
     cursor: pointer;
     }
-  
+
     .auto-login {
     display: flex;
     align-items: center;
     gap: 8px;
     }
-  
+
     .auto-login .custom-checkbox {
     cursor: pointer;
     display: flex;
     }
-  
+
     .auto-login .custom-checkbox img {
     width: 24px;
     height: 24px;
     }
-  
+
     .auto-login label {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: #3B3857;
     font-weight: 400;
     }
-  
+
     .auto-login input[type="checkbox"] {
     display: none;
     }
-  
+
     .social-section {
     margin-top: 30px;
     width: 370px;
     align-self: center;
     text-align: center;
     }
-  
+
     .social-divider {
     position: relative;
     text-align: center;
@@ -224,7 +254,7 @@
     color: #000;
     margin-bottom: 20px;
     }
-  
+
     .social-divider::before,
     .social-divider::after {
     content: '';
@@ -234,21 +264,21 @@
     height: 1px;
     background-color: #000;
     }
-  
+
     .social-divider::before {
     left: 0;
     }
-  
+
     .social-divider::after {
     right: 0;
     }
-  
+
     .social-buttons {
     display: flex;
     justify-content: center;
     gap: 40px;
     }
-  
+
     .social-buttons button {
     width: 60px;
     height: 60px;
@@ -262,12 +292,80 @@
     align-items: center;
     justify-content: center;
     }
-  
+
     .social-buttons button:hover {
     transform: scale(1.1);
     }
-  
+
     .social-buttons img {
     width: 60px;
     height: 60px;
+    }
+
+    @media (max-width: 480px) {
+    .login-wrapper {
+    background-color: #fff;
+    padding: 100px 20px 0;
+    margin: 0 auto 40px;
+    width: calc(100% - 40px);
+    max-width: 335px;
+    }
+
+    .login-box {
+    padding: 20px 4px 120px;
+    width: 100%;
+    }
+
+    .login-box h1 {
+    font-size: 18px;
+    margin-bottom: 24px;
+    margin-top: 54px;
+    }
+
+    .input-container {
+    width: 265px;
+    margin: 0 auto;
+    }
+
+    .input-container input[type="text"],
+    .input-container input[type="password"] {
+    width: 265px;
+    }
+
+    .login-button {
+    width: 300px;
+    }
+
+    .social-section {
+    width: 295px;
+    }
+
+    .social-divider::before,
+    .social-divider::after {
+    width: 80px;
+    }
+
+    .social-buttons {
+    gap: 20px;
+    }
+
+    .social-buttons button,
+    .social-buttons img {
+    width: 40px;
+    height: 40px;
+    }
+    }
+
+    @media (min-width: 768px) {
+    .login-box {
+    padding: 60px;
+    }
+
+    .tab-navigation {
+    justify-content: flex-start;
+    }
+
+    .description {
+    padding: 0;
+    }
     }

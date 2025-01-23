@@ -1,361 +1,362 @@
-  .grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: 30px;
-  grid-template-areas: 
-  "backend frontend database"
-  "webserver realtime realtime";
-  }
-
-  .backend { grid-area: backend; }
-  .frontend { grid-area: frontend; }
-  .database { grid-area: database; }
-  .webserver { grid-area: webserver; }
-  .realtime { grid-area: realtime; }
-
-  .skill-wrapper {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #1D1E20, #000);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 0;
-  }
-
-  .skill-title {
-  color: white;
-  font-size: 34px;
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 60px;
-  margin-top: 300px;
-  margin-bottom: 160px;
-  }
-
-  .skill-container {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  }
-
-  .top-box {
-  background: #25252A;
-  border-radius: 20px;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  }
-
-  .section-title {
-  color: #fff;
-  font-size: 24px;
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 30px;
-  transition: color 0.5s ease-in-out;
-  }
-
-  .section-title:hover {
-  color: #00FFAE;
-  }
-
-  .grid-container {
-  display : grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px;
-  grid-template-areas:
-  "backend frontend database"
-  "backend webserver realtime";
-  }
-
-  .grid-item {
-  background: #25252A;
-  border-radius: 20px;
-  padding: 52px;
-  }
-
-  .backend { grid-area: backend; }
-  .frontend { grid-area: frontend; }
-  .database { grid-area: database; }
-  .webserver { grid-area: webserver; }
-  .realtime { grid-area: realtime; }
-
-  .icon-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  }
-
-  .dev-tool .icon-group {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  justify-content: flex-start;
-  }
-
-  .backend .icon-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  }
-
-  .skill-item {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  }
-
-  .skill-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  }
-
-  .tooltip {
-  position: absolute;
-  background: white;
-  border-radius: 20px;
-  padding: 16px 20px;
-  bottom: calc(100% + 15px);
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s ease-in-out;
-  z-index: 800;
-  min-width: max-content;
-  }
-
-  .tooltip-description {
-  display: inline-block;
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 8px;
-  }
-
-  .tooltip-description-sub {
-  display: inline-block;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 8px;
-  margin-right: 60px;
-  }
-
-  .tooltip-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  color: #000;
-  }
-
-  .tooltip::before {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid white;
-  }
-  .skill-item:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(-5px);
-  }
-
-  .skill-item:hover img {
-  transform: translateY(-5px);
-  }
-
-  .backend .icon-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  }
-
-  .webserver .icon-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  }
-
-  @media (max-width: 768px) {
-  .skill-container {
-  width: calc(100% - 40px);
-  margin: 0 20px;
-  }
-
-  .skill-title {
-  font-size: 36px;
-  margin-top: 150px;
-  margin-bottom: 80px;
-  }
-
-  .top-box {
-  grid-template-columns: 1fr;
-  gap: 40px;
-  padding: 30px;
-  }
-
-  .grid-container {
-  grid-template-columns: 1fr;
-  grid-template-areas: 
-  "backend"
-  "frontend"
-  "database"
-  "webserver"
-  "realtime";
-  }
-
-  .grid-item {
-  position: relative;
-  overflow: visible;
-  }
-
-  .dev-tool .icon-group {
-  grid-template-columns: repeat(3, 1fr);
-  }
-
-  .backend .icon-group {
-  grid-template-columns: repeat(2, 1fr);
-  }
-
-  .webserver .icon-group {
-  grid-template-columns: repeat(2, 1fr);
-  }
-
-  .skill-item {
-  position: relative;
-  }
-
-  .section-title {
-  font-size: 20px;
-  margin-bottom: 20px;
-  }
-
-  .tooltip {
-  position: absolute;
-  max-width: 180px;
-  width: max-content;
-  bottom: calc(100% + 15px);
-  }
-
-  .skill-item .tooltip {
-  left: 50%;
-  transform: translateX(-50%);
-  }
-
-  .skill-item:nth-child(2n-1) .tooltip {
-  left: 0;
-  transform: translateX(0);
-  }
-
-  .skill-item:nth-child(2n) .tooltip {
-  left: auto;
-  right: 0;
-  transform: translateX(0);
-  }
-
-  .skill-item .tooltip::before {
-  left: 50%;
-  transform: translateX(-50%);
-  }
-
-  .skill-item:nth-child(2n-1) .tooltip::before {
-  left: 20px;
-  transform: translateX(0);
-  }
-
-  .skill-item:nth-child(2n) .tooltip::before {
-  left: auto;
-  right: 20px;
-  transform: translateX(0);
-  }
-
-  .skill-item:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-5px);
-  }
-
-  .skill-item:nth-child(2n-1):hover .tooltip {
-  transform: translateX(0) translateY(-5px);
-  }
-
-  .skill-item:nth-child(2n):hover .tooltip {
-  transform: translateX(0) translateY(-5px);
-  }
-  }
-
-  @media (max-width: 480px) {
-    .skill-container {
-        width: calc(100% - 30px);
-        margin: 0 15px;
-        margin-bottom: -120px;
+    /* Skill.css */
+    .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 30px;
+    grid-template-areas: 
+    "backend frontend database"
+    "webserver realtime realtime";
     }
-  
+
+    .backend { grid-area: backend; }
+    .frontend { grid-area: frontend; }
+    .database { grid-area: database; }
+    .webserver { grid-area: webserver; }
+    .realtime { grid-area: realtime; }
+
+    .skill-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #1D1E20, #000);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    }
+
     .skill-title {
-        font-size: 24px;
-        margin-top: 80px;
-        margin-bottom: 40px;
+    color: white;
+    font-size: 34px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 60px;
+    margin-top: 300px;
+    margin-bottom: 160px;
     }
-  
-    .grid-item {
-        padding: 20px;
+
+    .skill-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     }
-  
-    .icon-group {
-        gap: 12px;
+
+    .top-box {
+    background: #25252A;
+    border-radius: 20px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     }
-  
-    .dev-tool .icon-group {
-        grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .backend .icon-group,
-    .webserver .icon-group {
-        grid-template-columns: repeat(2, 1fr);
-    }
-  
-    .skill-item {
-        width: 60px;
-        height: 60px;
-        position: relative;
-    }
-  
+
     .section-title {
-        font-size: 18px;
-        margin-bottom: 15px;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 30px;
+    transition: color 0.5s ease-in-out;
+    }
+
+    .section-title:hover {
+    color: #00FFAE;
+    }
+
+    .grid-container {
+    display : grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    grid-template-areas:
+    "backend frontend database"
+    "backend webserver realtime";
+    }
+
+    .grid-item {
+    background: #25252A;
+    border-radius: 20px;
+    padding: 52px;
+    }
+
+    .backend { grid-area: backend; }
+    .frontend { grid-area: frontend; }
+    .database { grid-area: database; }
+    .webserver { grid-area: webserver; }
+    .realtime { grid-area: realtime; }
+
+    .icon-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    }
+
+    .dev-tool .icon-group {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    justify-content: flex-start;
+    }
+
+    .backend .icon-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    }
+
+    .skill-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    }
+
+    .skill-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
     }
 
     .tooltip {
-        position: absolute;
-        max-width: 160px;
-        padding: 10px 14px;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 10px;
+    position: absolute;
+    background: white;
+    border-radius: 20px;
+    padding: 16px 20px;
+    bottom: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    z-index: 800;
+    min-width: max-content;
+    }
+
+    .tooltip-description {
+    display: inline-block;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 8px;
+    }
+
+    .tooltip-description-sub {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+    margin-right: 60px;
+    }
+
+    .tooltip-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    }
+
+    .tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    }
+    .skill-item:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+    }
+
+    .skill-item:hover img {
+    transform: translateY(-5px);
+    }
+
+    .backend .icon-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    }
+
+    .webserver .icon-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+    .skill-container {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    }
+
+    .skill-title {
+    font-size: 36px;
+    margin-top: 150px;
+    margin-bottom: 80px;
+    }
+
+    .top-box {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 30px;
+    }
+
+    .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "backend"
+    "frontend"
+    "database"
+    "webserver"
+    "realtime";
+    }
+
+    .grid-item {
+    position: relative;
+    overflow: visible;
+    }
+
+    .dev-tool .icon-group {
+    grid-template-columns: repeat(3, 1fr);
+    }
+
+    .backend .icon-group {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    .webserver .icon-group {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-item {
+    position: relative;
+    }
+
+    .section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    }
+
+    .tooltip {
+    position: absolute;
+    max-width: 180px;
+    width: max-content;
+    bottom: calc(100% + 15px);
+    }
+
+    .skill-item .tooltip {
+    left: 50%;
+    transform: translateX(-50%);
+    }
+
+    .skill-item:nth-child(2n-1) .tooltip {
+    left: 0;
+    transform: translateX(0);
+    }
+
+    .skill-item:nth-child(2n) .tooltip {
+    left: auto;
+    right: 0;
+    transform: translateX(0);
+    }
+
+    .skill-item .tooltip::before {
+    left: 50%;
+    transform: translateX(-50%);
+    }
+
+    .skill-item:nth-child(2n-1) .tooltip::before {
+    left: 20px;
+    transform: translateX(0);
+    }
+
+    .skill-item:nth-child(2n) .tooltip::before {
+    left: auto;
+    right: 20px;
+    transform: translateX(0);
+    }
+
+    .skill-item:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-5px);
+    }
+
+    .skill-item:nth-child(2n-1):hover .tooltip {
+    transform: translateX(0) translateY(-5px);
+    }
+
+    .skill-item:nth-child(2n):hover .tooltip {
+    transform: translateX(0) translateY(-5px);
+    }
+    }
+
+    @media (max-width: 480px) {
+    .skill-container {
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    margin-bottom: -120px;
+    }
+
+    .skill-title {
+    font-size: 24px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    }
+
+    .grid-item {
+    padding: 20px;
+    }
+
+    .icon-group {
+    gap: 12px;
+    }
+
+    .dev-tool .icon-group {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    .backend .icon-group,
+    .webserver .icon-group {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-item {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    }
+
+    .section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    }
+
+    .tooltip {
+    position: absolute;
+    max-width: 160px;
+    padding: 10px 14px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
     }
 
     .skill-item:nth-child(odd) .tooltip {
-        left: 0;
-        transform: translateX(0);
+    left: 0;
+    transform: translateX(0);
     }
 
     .skill-item:nth-child(even) .tooltip {
-        left: auto;
-        right: 0;
-        transform: translateX(0);
+    left: auto;
+    right: 0;
+    transform: translateX(0);
     }
 
     .skill-item[data-skill="JavaScript"] .tooltip,
@@ -364,25 +365,25 @@
     .skill-item[data-skill="Redis"] .tooltip,
     .skill-item[data-skill="Tomcat"] .tooltip,
     .skill-item[data-skill="SSL"] .tooltip {
-        left: 0 !important;
-        right: auto !important;
-        transform: translateX(0) !important;
+    left: 0 !important;
+    right: auto !important;
+    transform: translateX(0) !important;
     }
 
     .tooltip::before {
-        left: 50%;
-        transform: translateX(-50%);
+    left: 50%;
+    transform: translateX(-50%);
     }
 
     .skill-item:nth-child(odd) .tooltip::before {
-        left: 20px;
-        transform: translateX(0);
+    left: 20px;
+    transform: translateX(0);
     }
 
     .skill-item:nth-child(even) .tooltip::before {
-        right: 20px;
-        left: auto;
-        transform: translateX(0);
+    right: 20px;
+    left: auto;
+    transform: translateX(0);
     }
 
     .skill-item[data-skill="JavaScript"] .tooltip::before,
@@ -391,29 +392,29 @@
     .skill-item[data-skill="Redis"] .tooltip::before,
     .skill-item[data-skill="Tomcat"] .tooltip::before,
     .skill-item[data-skill="SSL"] .tooltip::before {
-        left: 20px !important;
-        right: auto !important;
-        transform: translateX(0) !important;
+    left: 20px !important;
+    right: auto !important;
+    transform: translateX(0) !important;
     }
-    
+
     .tooltip-title {
-        font-size: 18px;
+    font-size: 18px;
     }
 
     .tooltip-description {
-        font-size: 14px;
-        margin-bottom: 6px;
+    font-size: 14px;
+    margin-bottom: 6px;
     }
 
     .tooltip-description-sub {
-        font-size: 14px;
-        margin-right: 40px;
+    font-size: 14px;
+    margin-right: 40px;
     }
 
     .skill-item:hover .tooltip {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(-5px);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-5px);
     }
 
     .skill-item[data-skill="Thymeleaf"]:hover .tooltip,
@@ -422,62 +423,62 @@
     .skill-item[data-skill="Tomcat"]:hover .tooltip,
     .skill-item[data-skill="SSL"]:hover .tooltip,
     .skill-item[data-skill="Swagger"]:hover .tooltip {
-        transform: translateX(0) translateY(-5px) !important;
+    transform: translateX(0) translateY(-5px) !important;
     }
-      /* JavaScript icon tooltip */
-  .backend .icon-group .skill-item:nth-child(8) .tooltip,
-  /* Thymeleaf icon tooltip */
-  .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2) .tooltip,
-  /* MySQL icon tooltip */
-  .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2) .tooltip,
-  /* Redis icon tooltip */
-  .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5) .tooltip,
-  /* Tomcat icon tooltip */
-  .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2) .tooltip,
-  /* SSL icon tooltip */
-  .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5) .tooltip {
+    /* JavaScript icon tooltip */
+    .backend .icon-group .skill-item:nth-child(8) .tooltip,
+    /* Thymeleaf icon tooltip */
+    .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2) .tooltip,
+    /* MySQL icon tooltip */
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2) .tooltip,
+    /* Redis icon tooltip */
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5) .tooltip,
+    /* Tomcat icon tooltip */
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2) .tooltip,
+    /* SSL icon tooltip */
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5) .tooltip {
     left: 0 !important;
     right: auto !important;
     transform: translateX(0) !important;
-  }
+    }
 
-   /* 툴팁 기본 위치 설정 */
-   .core-language .icon-group .skill-item:nth-child(2) .tooltip,
-   .backend .icon-group .skill-item:nth-child(8) .tooltip,
-   .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2) .tooltip,
-   .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2) .tooltip,
-   .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5) .tooltip,
-   .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2) .tooltip,
-   .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5) .tooltip,
-   .grid-item:nth-child(5) .icon-group .skill-item:nth-child(2) .tooltip {
-     left: 0 !important;
-     right: auto !important;
-     transform: translateX(0) !important;
-   }
- 
-   /* 화살표 위치 조정 */
-   .core-language .icon-group .skill-item:nth-child(2) .tooltip::before,
-   .backend .icon-group .skill-item:nth-child(8) .tooltip::before,
-   .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2) .tooltip::before,
-   .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2) .tooltip::before,
-   .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5) .tooltip::before,
-   .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2) .tooltip::before,
-   .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5) .tooltip::before,
-   .grid-item:nth-child(5) .icon-group .skill-item:nth-child(2) .tooltip::before {
-     left: 20px !important;
-     right: auto !important;
-     transform: translateX(0) !important;
-   }
- 
-   /* 호버 시 애니메이션 */
-   .core-language .icon-group .skill-item:nth-child(2):hover .tooltip,
-   .backend .icon-group .skill-item:nth-child(8):hover .tooltip,
-   .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2):hover .tooltip,
-   .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2):hover .tooltip,
-   .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5):hover .tooltip,
-   .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2):hover .tooltip,
-   .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5):hover .tooltip,
-   .grid-item:nth-child(5) .icon-group .skill-item:nth-child(2):hover .tooltip {
-     transform: translateX(0) translateY(-5px) !important;
-   }
- }
+    /* 툴팁 기본 위치 설정 */
+    .core-language .icon-group .skill-item:nth-child(2) .tooltip,
+    .backend .icon-group .skill-item:nth-child(8) .tooltip,
+    .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2) .tooltip,
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2) .tooltip,
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5) .tooltip,
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2) .tooltip,
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5) .tooltip,
+    .grid-item:nth-child(5) .icon-group .skill-item:nth-child(2) .tooltip {
+    left: 0 !important;
+    right: auto !important;
+    transform: translateX(0) !important;
+    }
+
+    /* 화살표 위치 조정 */
+    .core-language .icon-group .skill-item:nth-child(2) .tooltip::before,
+    .backend .icon-group .skill-item:nth-child(8) .tooltip::before,
+    .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2) .tooltip::before,
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2) .tooltip::before,
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5) .tooltip::before,
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2) .tooltip::before,
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5) .tooltip::before,
+    .grid-item:nth-child(5) .icon-group .skill-item:nth-child(2) .tooltip::before {
+    left: 20px !important;
+    right: auto !important;
+    transform: translateX(0) !important;
+    }
+
+    /* 호버 시 애니메이션 */
+    .core-language .icon-group .skill-item:nth-child(2):hover .tooltip,
+    .backend .icon-group .skill-item:nth-child(8):hover .tooltip,
+    .grid-item:nth-child(2) .icon-group .skill-item:nth-child(2):hover .tooltip,
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(2):hover .tooltip,
+    .grid-item:nth-child(3) .icon-group .skill-item:nth-child(5):hover .tooltip,
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(2):hover .tooltip,
+    .grid-item:nth-child(4) .icon-group .skill-item:nth-child(5):hover .tooltip,
+    .grid-item:nth-child(5) .icon-group .skill-item:nth-child(2):hover .tooltip {
+    transform: translateX(0) translateY(-5px) !important;
+    }
+    }
