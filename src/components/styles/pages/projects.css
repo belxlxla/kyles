@@ -1,502 +1,504 @@
-body, html {
-    overflow-x: hidden;
-    max-width: 100%;
-    width: 100%;
-    position: relative;
-    }
+  body, html {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  }
 
-    .projects-wrapper {
-    margin-top: 200px;
-    width: 100%;
-    min-height: 100vh;
-    background-color: #0C111F;
-    padding: 60px 0;
-    position: relative;
-    }
+  .projects-wrapper {
+  margin-top: 200px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0C111F;
+  padding: 60px 0;
+  position: relative;
+  }
 
-    .projects-title {
-    text-align: center;
-    color: white;
-    font-size: 34px;
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 200px;
-    margin-top: 300px;
-    margin-bottom: 100px;
-    z-index: 10;
-    position: relative;
-    }
+  .projects-title {
+  text-align: center;
+  color: white;
+  font-size: 34px;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 200px;
+  margin-top: 300px;
+  margin-bottom: 100px;
+  z-index: 10;
+  position: relative;
+  }
 
-    .slider-container {
-    width: 1200px;
-    max-width: 1400px;
-    margin: 0 auto;
-    position: relative;
-    height: 600px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-    margin-bottom: 120px;
-    }
+  .slider-container {
+  width: 1200px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  height: 600px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  margin-bottom: 120px;
+  }
 
-    .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 20;
-    }
+  .nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 20;
+  }
 
-    .nav-button:first-child {
-    left: -60px;
-    }
+  .nav-button:first-child {
+  left: -60px;
+  }
 
-    .nav-button:last-child {
-    right: -60px;
-    }
+  .nav-button:last-child {
+  right: -60px;
+  }
 
-    .nav-button img {
-    opacity: 0.8;
-    width: 100px;
-    height: 100px;
-    }
+  .nav-button img {
+  opacity: 0.8;
+  width: 100px;
+  height: 100px;
+  pointer-events: auto !important;
+  }
 
-    .project-card {
-    position: absolute;
-    flex: 1;
-    background: white;
-    border-radius: 20px;
-    display: flex;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-    transform-origin: center;
-    width: 1200px;
-    height: 620px;
-    }
+  .project-card {
+  position: absolute;
+  flex: 1;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center;
+  width: 1200px;
+  height: 620px;
+  }
 
-    .project-card.active {
-    z-index: 10;
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-    }
+  .project-card.active {
+  z-index: 10;
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  }
 
-    .project-card.prev {
-    opacity: 0.8;
-    filter: blur(30px);
-    transform: scale(0.8) translateX(-140%);
-    z-index: 5;
-    }
+  .project-card.prev {
+  opacity: 0.8;
+  filter: blur(30px);
+  transform: scale(0.8) translateX(-140%);
+  z-index: 5;
+  }
 
-    .project-card.next {
-    opacity: 0.8;
-    filter: blur(30px);
-    transform: scale(0.8) translateX(140%);
-    z-index: 5;
-    }
+  .project-card.next {
+  opacity: 0.8;
+  filter: blur(30px);
+  transform: scale(0.8) translateX(140%);
+  z-index: 5;
+  }
 
-    .card-image {
-    flex: 0 0 45%;
-    position: relative;
-    overflow: hidden;
-    }
+  .card-image {
+  flex: 0 0 45%;
+  position: relative;
+  overflow: hidden;
+  }
 
-    .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    }
+  .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: auto !important;
+  }
 
-    .progress {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif;
-    }
+  .progress {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  }
 
-    .card-content {
-    width: 50%;
-    padding: 40px;
-    }
+  .card-content {
+  width: 50%;
+  padding: 40px;
+  }
 
-    .period {
-    font-family: 'Montserrat', sans-serif;
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 16px;
-    }
+  .period {
+  font-family: 'Montserrat', sans-serif;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 16px;
+  }
 
-    .card-title {
-    font-family: 'Montserrat', sans-serif;
+  .card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: #000;
+  margin-bottom: 16px;
+  }
+
+  .pj-card-description {
+  font-family: 'Pretendard', sans-serif;
+  color: #333;
+  height: 3.2em;;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  min-height: 3.2em;
+  max-height: 3.2em;
+  overflow-y: auto;
+  padding-right: 10px;
+  }
+
+  .card-description::-webkit-scrollbar {
+  width: 4px;
+  }
+
+  .card-description::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  }
+
+  .card-description::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  }
+
+  .tasks-section {
+  margin-bottom: 30px;
+  }
+
+  .tasks-title {
+  color: #9797AC;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  margin-bottom: 6px;
+  }
+
+  .tasks-list {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 30px;
+  padding-right: 20px;
+  }
+
+  .tasks-list::-webkit-scrollbar {
+  width: 4px;
+  }
+
+  .tasks-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  }
+
+  .tasks-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  }
+
+  .tasks-list p {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300;
+  color: #9797AC;
+  margin-bottom: 8px;
+  }
+
+  .info-row {
+  display: flex;
+  margin-bottom: 12px;
+  }
+
+  .label {
+  width: 100px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #666 !important;
+  }
+
+  .value {
+  font-family: 'Montserrat', sans-serif;
+  color: #333 !important;
+  }
+
+  .link {
+  color: #4B9CFF !important;
+  text-decoration: none;
+  }
+
+  .tech-stack {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-top: 40px;
+  position: relative;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  padding-right: 50px;
+  max-height: 100px;
+  }
+
+  .tech-stack-wrapper {
+  position: relative;
+  width: 100%;
+  }
+
+  .tech-stack-overlay-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background: linear-gradient(
+  to right,
+  transparent 0%,
+  white 50%,
+  white 100%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 10;
+  }
+
+  .tech-tag {
+  flex: 0 0 auto;
+  background: #f5f5f5;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #333;
+  }
+
+  @media (max-width: 768px) {
+  .projects-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0C111F;
+  margin-top: 180px;
+  padding: 30px 0;
+  }
+
+  .projects-title {
+  font-size: 36px;
+  margin-bottom: 500px;
+  }
+
+  .slider-container {
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+  }
+
+  .nav-button {
+  top: 30%;
+  }
+
+  .nav-button:first-child {
+  left: 0;
+  }
+
+  .nav-button:last-child {
+  right: 0;
+  }
+
+  .nav-button img {
+  width: 80px;
+  height: 80px;
+  }
+
+  .project-card {
+  width: calc(100% - 40px);
+  height: auto;
+  flex-direction: column;
+  margin: 0 20px;
+  }
+
+  .card-image {
+  flex: none;
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  }
+
+  .card-content {
+  width: 100%;
+  padding: 20px;
+  }
+
+  .period {
+  font-size: 12px;
+  margin-bottom: 12px;
+  }
+
+  .card-title {
+  font-size: 20px;
+  margin-bottom: 12px;
+  }
+
+  .card-description {
+  font-size: 14px;
+  height: auto;
+  max-height: none;
+  }
+
+  .tasks-section {
+  margin-bottom: 20px;
+  }
+
+  .tasks-list {
+  height: 150px;
+  padding-right: 10px;
+  }
+
+  .tasks-title {
+  font-size: 16px;
+  padding-left: 5px;
+  padding-right: 20px; 
+  }
+
+  .tasks-list p {
+  font-size: 14px;
+  padding-left: 5px;
+  padding-right: 20px; 
+  }
+
+  .info-row {
+  margin-bottom: 8px;
+  }
+
+  .label {
+  width: 80px;
+  font-size: 14px;
+  }
+
+  .value {
+  font-size: 14px;
+  }
+
+  .tech-stack {
+  margin-top: 20px;
+  padding-right: 20px;
+  }
+
+  .tech-tag {
+  font-size: 14px;
+  padding: 4px 8px;
+  }
+
+  .project-card.prev,
+  .project-card.next {
+  transform: scale(0.8) translateY(0);
+  opacity: 0;
+  }
+  }
+
+  @media (max-width: 480px) {
+  .projects-wrapper {
+    margin-top: 100px;
+    padding: 100px 0;
+  }
+
+  .projects-title {
     font-size: 24px;
-    color: #000;
-    margin-bottom: 16px;
-    }
+    margin-bottom: 120px;
+    color: #fff;
+  }
 
-    .pj-card-description {
-    font-family: 'Pretendard', sans-serif;
-    color: #333;
-    height: 3.2em;;
-    line-height: 1.6;
-    margin-bottom: 18px;
-    min-height: 3.2em;
-    max-height: 3.2em;
-    overflow-y: auto;
-    padding-right: 10px;
-    }
+  .slider-container {
+    margin: 440px auto;
+  }
 
-    .card-description::-webkit-scrollbar {
-    width: 4px;
-    }
+  .nav-button {
+    top: 25%;
+  }
 
-    .card-description::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-    }
+  .nav-button img {
+    width: 80px;
+    height: 80px;
+  }
 
-    .card-description::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-    }
+  .project-card {
+    width: calc(100% - 30px);
+    margin: 0 30px;
+  }
 
-    .tasks-section {
-    margin-bottom: 30px;
-    }
+  .card-image {
+    height: 360px;
+  }
 
-    .tasks-title {
-    color: #9797AC;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 18px;
-    margin-bottom: 6px;
-    }
-
-    .tasks-list {
-    height: 200px;
-    overflow-y: auto;
-    margin-bottom: 30px;
-    padding-right: 20px;
-    }
-
-    .tasks-list::-webkit-scrollbar {
-    width: 4px;
-    }
-
-    .tasks-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-    }
-
-    .tasks-list::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-    }
-
-    .tasks-list p {
-    font-family: 'Pretendard', sans-serif;
-    font-weight: 300;
-    color: #9797AC;
-    margin-bottom: 8px;
-    }
-
-    .info-row {
-    display: flex;
-    margin-bottom: 12px;
-    }
-
-    .label {
-    width: 100px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: #666 !important;
-    }
-
-    .value {
-    font-family: 'Montserrat', sans-serif;
-    color: #333 !important;
-    }
-
-    .link {
-    color: #4B9CFF !important;
-    text-decoration: none;
-    }
-
-    .tech-stack {
-    display: flex;
-    gap: 12px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    margin-top: 40px;
-    position: relative;
-    padding-bottom: 10px;
-    scroll-behavior: smooth;
-    padding-right: 50px;
-    max-height: 100px;
-    }
-
-    .tech-stack-wrapper {
-    position: relative;
-    width: 100%;
-    }
-
-    .tech-stack-overlay-right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 100px;
-    background: linear-gradient(
-    to right,
-    transparent 0%,
-    white 50%,
-    white 100%
-    );
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 10;
-    }
-
-    .tech-tag {
-    flex: 0 0 auto;
-    background: #f5f5f5;
+  .progress {
+    font-size: 12px;
     padding: 6px 12px;
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif;
+  }
+
+  .card-content {
+  padding: 15px 20px;
+  }
+
+  .period {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+    padding-right: 40px; 
+  }
+
+  .pj-card-description {
+    font-size: 14px;
+    padding-right: 40px; 
+    max-height: 400px;
+  }
+
+  .tasks-section {
+    margin-bottom: 16px;
+  }
+
+  .tasks-list {
+    height: 120px;
+    padding-right: 20px;
+  }
+
+  .tasks-title {
     font-size: 16px;
-    color: #333;
-    }
+  }
 
-    @media (max-width: 768px) {
-        .projects-wrapper {
-          width: 100%;
-          min-height: 100vh;
-          background-color: #0C111F;
-          margin-top: 180px;
-          padding: 30px 0;
-        }
-      
-        .projects-title {
-          font-size: 36px;
-          margin-bottom: 500px;
-        }
-      
-        .slider-container {
-          width: 100%;
-          height: auto;
-          margin: 20px auto;
-        }
-      
-        .nav-button {
-          top: 30%;
-        }
-      
-        .nav-button:first-child {
-          left: 0;
-        }
-      
-        .nav-button:last-child {
-          right: 0;
-        }
-      
-        .nav-button img {
-          width: 80px;
-          height: 80px;
-        }
-      
-        .project-card {
-          width: calc(100% - 40px);
-          height: auto;
-          flex-direction: column;
-          margin: 0 20px;
-        }
-      
-        .card-image {
-          flex: none;
-          width: 100%;
-          height: 460px;
-          object-fit: cover;
-        }
-      
-        .card-content {
-          width: 100%;
-          padding: 20px;
-        }
-      
-        .period {
-          font-size: 12px;
-          margin-bottom: 12px;
-        }
-      
-        .card-title {
-          font-size: 20px;
-          margin-bottom: 12px;
-        }
-      
-        .card-description {
-          font-size: 14px;
-          height: auto;
-          max-height: none;
-        }
-      
-        .tasks-section {
-          margin-bottom: 20px;
-        }
-      
-        .tasks-list {
-          height: 150px;
-          padding-right: 10px;
-        }
-      
-        .tasks-title {
-          font-size: 16px;
-          padding-left: 5px;
-          padding-right: 20px; 
-        }
-      
-        .tasks-list p {
-          font-size: 14px;
-          padding-left: 5px;
-          padding-right: 20px; 
-        }
-      
-        .info-row {
-          margin-bottom: 8px;
-        }
-      
-        .label {
-          width: 80px;
-          font-size: 14px;
-        }
-      
-        .value {
-          font-size: 14px;
-        }
-      
-        .tech-stack {
-          margin-top: 20px;
-          padding-right: 20px;
-        }
-      
-        .tech-tag {
-          font-size: 14px;
-          padding: 4px 8px;
-        }
-      
-        .project-card.prev,
-        .project-card.next {
-          transform: scale(0.8) translateY(0);
-          opacity: 0;
-        }
-      }
+  .tasks-list p {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
 
-      @media (max-width: 480px) {
-        .projects-wrapper {
-            margin-top: 100px;
-            padding: 100px 0;
-        }
-      
-        .projects-title {
-            font-size: 24px;
-            margin-bottom: 120px;
-            color: #fff;
-        }
-      
-        .slider-container {
-            margin: 440px auto;
-        }
-      
-        .nav-button {
-            top: 25%;
-        }
-      
-        .nav-button img {
-            width: 80px;
-            height: 80px;
-        }
-      
-        .project-card {
-            width: calc(100% - 30px);
-            margin: 0 30px;
-        }
-      
-        .card-image {
-            height: 360px;
-        }
-      
-        .progress {
-            font-size: 12px;
-            padding: 6px 12px;
-        }
-      
-        .card-content {
-          padding: 15px 20px;
-        }
-      
-        .period {
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-      
-        .card-title {
-            font-size: 18px;
-            margin-bottom: 8px;
-            padding-right: 40px; 
-        }
-      
-        .pj-card-description {
-            font-size: 14px;
-            padding-right: 40px; 
-            max-height: 400px;
-        }
-      
-        .tasks-section {
-            margin-bottom: 16px;
-        }
-      
-        .tasks-list {
-            height: 120px;
-            padding-right: 20px;
-        }
-      
-        .tasks-title {
-            font-size: 16px;
-        }
-      
-        .tasks-list p {
-            font-size: 12px;
-            margin-bottom: 6px;
-        }
-      
-        .info-row {
-            margin-bottom: 6px;
-        }
-      
-        .label {
-            width: 70px;
-            font-size: 12px;
-        }
-      
-        .value {
-            font-size: 12px;
-        }
-      
-        .tech-stack {
-            margin-top: 14px;
-            padding-right: 14px;
-            gap: 8px;
-            max-height: 80px;
-        }
-      
-        .tech-tag {
-            font-size: 12px;
-            padding: 4px 8px;
-        }
-     }
+  .info-row {
+    margin-bottom: 6px;
+  }
+
+  .label {
+    width: 70px;
+    font-size: 12px;
+  }
+
+  .value {
+    font-size: 12px;
+  }
+
+  .tech-stack {
+    margin-top: 14px;
+    padding-right: 14px;
+    gap: 8px;
+    max-height: 80px;
+  }
+
+  .tech-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  }

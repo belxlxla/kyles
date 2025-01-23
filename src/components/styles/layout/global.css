@@ -21,7 +21,6 @@
         -webkit-touch-callout: none !important;
         -webkit-user-select: none !important;
         user-select: none !important;
-        pointer-events: none !important;
         -webkit-user-drag: none !important;
         touch-action: none !important;
         -webkit-tap-highlight-color: transparent !important;

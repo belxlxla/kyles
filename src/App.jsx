@@ -41,7 +41,6 @@ function App() {
     };
   }, []);
 
-function App() {
  return (
    <Routes>
      <Route 
@@ -125,7 +124,6 @@ function App() {
      />
    </Routes>
  );
-}
 }
 
 export default App;
