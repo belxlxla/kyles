@@ -40,15 +40,21 @@
   }
 
   .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer !important;
-    padding: 10px;
-    z-index: 20;
-    pointer-events: auto !important;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer !important;
+  padding: 10px;
+  z-index: 20;
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  }
+
+  .nav-button:focus {
+  outline: none !important;
   }
 
   .nav-button:first-child {
@@ -60,10 +66,10 @@
   }
 
   .nav-button img {
-    opacity: 0.8;
-    width: 100px;
-    height: 100px;
-    pointer-events: none !important; 
+  opacity: 0.8;
+  width: 100px;
+  height: 100px;
+  pointer-events: none !important; 
   }
 
   .project-card {
@@ -402,41 +408,41 @@
 
   @media (max-width: 480px) {
   .projects-wrapper {
-    margin-top: 100px;
-    padding: 100px 0;
+  margin-top: 100px;
+  padding: 100px 0;
   }
 
   .projects-title {
-    font-size: 24px;
-    margin-bottom: 120px;
-    color: #fff;
+  font-size: 24px;
+  margin-bottom: 120px;
+  color: #fff;
   }
 
   .slider-container {
-    margin: 440px auto;
+  margin: 440px auto;
   }
 
   .nav-button {
-    top: 25%;
+  top: 25%;
   }
 
   .nav-button img {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
   }
 
   .project-card {
-    width: calc(100% - 30px);
-    margin: 0 30px;
+  width: calc(100% - 30px);
+  margin: 0 30px;
   }
 
   .card-image {
-    height: 360px;
+  height: 360px;
   }
 
   .progress {
-    font-size: 12px;
-    padding: 6px 12px;
+  font-size: 12px;
+  padding: 6px 12px;
   }
 
   .card-content {
@@ -444,62 +450,62 @@
   }
 
   .period {
-    font-size: 12px;
-    margin-bottom: 8px;
+  font-size: 12px;
+  margin-bottom: 8px;
   }
 
   .card-title {
-    font-size: 18px;
-    margin-bottom: 8px;
-    padding-right: 40px; 
+  font-size: 18px;
+  margin-bottom: 8px;
+  padding-right: 40px; 
   }
 
   .pj-card-description {
-    font-size: 14px;
-    padding-right: 40px; 
-    max-height: 400px;
+  font-size: 14px;
+  padding-right: 40px; 
+  max-height: 400px;
   }
 
   .tasks-section {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
   }
 
   .tasks-list {
-    height: 120px;
-    padding-right: 20px;
+  height: 120px;
+  padding-right: 20px;
   }
 
   .tasks-title {
-    font-size: 16px;
+  font-size: 16px;
   }
 
   .tasks-list p {
-    font-size: 12px;
-    margin-bottom: 6px;
+  font-size: 12px;
+  margin-bottom: 6px;
   }
 
   .info-row {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
   }
 
   .label {
-    width: 70px;
-    font-size: 12px;
+  width: 70px;
+  font-size: 12px;
   }
 
   .value {
-    font-size: 12px;
+  font-size: 12px;
   }
 
   .tech-stack {
-    margin-top: 14px;
-    padding-right: 14px;
-    gap: 8px;
-    max-height: 80px;
+  margin-top: 14px;
+  padding-right: 14px;
+  gap: 8px;
+  max-height: 80px;
   }
 
   .tech-tag {
-    font-size: 12px;
-    padding: 4px 8px;
+  font-size: 12px;
+  padding: 4px 8px;
   }
   }
