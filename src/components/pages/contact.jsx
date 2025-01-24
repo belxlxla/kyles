@@ -206,13 +206,15 @@ const Contact = () => {
        <div className="form-group">
          <label>Number</label>
          <input
-           type="text"
-           name="number"
-           placeholder="연락처를 입력해 주세요"
-           value={formData.number}
-           onChange={handleChange}
-           className={errors.number ? 'error' : ''}
-         />
+                className="proposal-input"
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                name="contact"
+                placeholder="연락처를 입력해주세요"
+                value={formData.contact}
+                onChange={handleInputChange}
+              />
        </div>
 
        <div className="form-group">
