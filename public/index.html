@@ -14,17 +14,14 @@
     <title>Kyle's Portfolio</title>
   </head>
   <body>
-    <noscript>Kyle의 Back-end 포트폴리오 입니다.</noscript>
+    <noscript>Kyle's Back-end Portfolio Site</noscript>
     <div id="root"></div>
 
     <script>
-      // 우클릭 방지
       document.addEventListener('contextmenu', e => e.preventDefault());
-      
-      // 이미지 드래그 방지 
+    
       document.addEventListener('dragstart', e => e.preventDefault());
       
-      // 키보드 단축키 방지 (Ctrl+S, Cmd+S)
       document.addEventListener('keydown', e => {
         if ((e.ctrlKey || e.metaKey) && e.keyCode === 83) e.preventDefault();
       });
