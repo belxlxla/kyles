@@ -1,55 +1,74 @@
-    /* Global.css */
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; 
+/* Global.css */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+body {
+background-color: #000;
+color: #fff;
+overscroll-behavior: none;
+}
+
+.skill-item {
+    pointer-events: auto;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.skill-item img {
+    pointer-events: auto;
+    touch-action: manipulation;
+}
+
+img {
+-webkit-tap-highlight-color: transparent;
+pointer-events: auto;
+}
+
+text, textarea, input, button, a, [role="button"] {
+-webkit-user-select: text;
+user-select: text;
+pointer-events: auto;
+cursor: pointer;
+}
+
+.tooltip {
+pointer-events: auto;
+touch-action: manipulation;
+user-select: none;
+}
+
+.hamburger-button img {
+pointer-events: auto;
+}
+
+button, 
+a, 
+[role="button"],
+input,
+select,
+textarea {
+-webkit-touch-callout: default;
+pointer-events: auto;
+cursor: pointer;
+}
+
+.hamburger-button {
+    -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    }
+    outline: none;
+}
 
-    body {
-    background-color: #000;
-    color: #fff;
-    overscroll-behavior: none;
-    }
-
-    img {
-    -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
-    -webkit-user-drag: none !important;
-    touch-action: none !important;
-    -webkit-tap-highlight-color: transparent !important;
-    pointer-events: auto !important; 
-    }
-
-    text, textarea, input, button, a, [role="button"] {
-    -webkit-user-select: text;
-    -khtml-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-    pointer-events: auto;
-    cursor: pointer;
-    -webkit-touch-callout: default;
-    }
-
-    .hamburger-button img {
-    pointer-events: auto;
-    }
-
-    button, 
-    a, 
-    [role="button"],
-    input,
-    select,
-    textarea {
-    -webkit-touch-callout: default;
-    pointer-events: auto;
-    cursor: pointer;
-    }
+.hamburger-button:active,
+.hamburger-button:focus {
+    outline: none;
+    background: transparent;
+}

@@ -1,44 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <meta charset="utf-8" />
-    <!--bella : 파비콘 바꾸고 싶으면 pubilc 폴더 안에 .ico 형태로-->
-    <link rel="icon" href="%PUBLIC_URL%/icon.ico" />
-    <title>Kyle's Portfolio</title>
-    <meta name="description" content="BE Developer Kyle's Portfolio">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="BE Developer Kyle's Portfolio">
+    
+    <link rel="icon" href="%PUBLIC_URL%/icon.ico" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    
+    <title>Kyle's Portfolio</title>
   </head>
   <body>
     <noscript>Kyle의 Back-end 포트폴리오 입니다.</noscript>
     <div id="root"></div>
-    
+
     <script>
-      document.addEventListener('contextmenu', (e) => {
-          if (e.target.tagName === 'IMG') {
-              e.preventDefault();
-          }
-      });
+      // 우클릭 방지
+      document.addEventListener('contextmenu', e => e.preventDefault());
       
-      document.addEventListener('dragstart', (e) => {
-          if (e.target.tagName === 'IMG') {
-              e.preventDefault();
-          }
-      });
+      // 이미지 드래그 방지 
+      document.addEventListener('dragstart', e => e.preventDefault());
       
-      document.addEventListener('keydown', (e) => {
-          if ((e.ctrlKey || e.metaKey) && e.keyCode === 83) {
-              e.preventDefault();
-          }
+      // 키보드 단축키 방지 (Ctrl+S, Cmd+S)
+      document.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && e.keyCode === 83) e.preventDefault();
       });
-      </script>
-  
+    </script>
   </body>
 </html>
