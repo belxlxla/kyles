@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useEffect, useRef } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';  // useLocation 추가
 import Header from './components/layout/header';
 import Main from './components/pages/main';
 import SecondSection from './components/pages/secondSection';
@@ -22,12 +22,26 @@ import './styles/smoothScroll.css';
 function App() {
   // eslint-disable-next-line no-unused-vars
   const sectionsRef = useRef([]);
+  const location = useLocation(); 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  
+    const timer = setTimeout(() => {
+      const sections = document.querySelectorAll('.scroll-section');
+      if (sections.length > 0) {
+        sections[0].classList.add('in-view');
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]); 
 
   useEffect(() => {
     let isScrolling = false;
     let lastScrollTop = 0;
-    const scrollThreshold = 100; // 스크롤 민감도 설정하는 부분
-    const scrollDelay = 1500; // 스크롤 딜레이
+    const scrollThreshold = 3000; // 스크롤 민감도 여기서 설정하세요
+    const scrollDelay = 1500;
 
     const preventContextMenu = (e) => {
       if (e.target.tagName === 'IMG') {
@@ -35,7 +49,6 @@ function App() {
       }
     };
     
-    // 이미지 저장 방지
     const preventSave = (e) => {
       if (!e.target.closest('.nav-button')) {
         e.preventDefault();
@@ -60,9 +73,7 @@ function App() {
       }
     );
 
-    // 스크롤 핸들러
     const handleScroll = () => {
-      // form 작성 중일 때는 스크롤 효과 비활성화 되게............ㅜ
       if (document.activeElement.tagName === 'INPUT' || 
           document.activeElement.tagName === 'TEXTAREA') {
         return;
@@ -102,6 +113,7 @@ function App() {
       requestAnimationFrame(() => handleScroll(e));
     };
 
+    // 이벤트 리스너
     document.addEventListener('contextmenu', preventContextMenu);
     window.addEventListener('scroll', throttledHandleScroll);
     
@@ -111,9 +123,12 @@ function App() {
       img.addEventListener('contextmenu', preventSave);
     });
 
-    document.querySelectorAll('.scroll-section').forEach(section => {
-      observer.observe(section);
-    });
+    // Observer 등록
+    setTimeout(() => {
+      document.querySelectorAll('.scroll-section').forEach(section => {
+        observer.observe(section);
+      });
+    }, 100);
   
     return () => {
       document.removeEventListener('contextmenu', preventContextMenu);
@@ -124,7 +139,7 @@ function App() {
       });
       observer.disconnect();
     };
-  }, []);
+  }, [location.pathname]);  // location이 변경될 때마다 effect 재실행
 
   const wrapWithScrollSection = (Component) => (
     <div className="scroll-section">
@@ -132,87 +147,32 @@ function App() {
     </div>
   );
 
+  const MainRoute = () => (
+    <>
+      <Header />
+      <div className="main-content">
+        {wrapWithScrollSection(Main)}
+        {wrapWithScrollSection(SecondSection)}
+        {wrapWithScrollSection(About)}
+        {wrapWithScrollSection(Skill)}
+        {wrapWithScrollSection(Archiving)}
+        {wrapWithScrollSection(Projects)}
+        {wrapWithScrollSection(Career)}
+        {wrapWithScrollSection(Contact)}
+      </div>
+    </>
+  );
+
   return (
     <Routes>
-      <Route 
-        path="/login"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Login)}
-          </>
-        } 
-      />
-      <Route 
-        path="/" 
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Main)}
-            {wrapWithScrollSection(SecondSection)}
-            {wrapWithScrollSection(About)}
-            {wrapWithScrollSection(Skill)}
-            {wrapWithScrollSection(Archiving)}
-            {wrapWithScrollSection(Projects)}
-            {wrapWithScrollSection(Career)}
-            {wrapWithScrollSection(Contact)}
-          </>
-        } 
-      />
-      <Route 
-        path="/payments"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Payments)}
-          </>
-        } 
-      />
-      <Route 
-        path="/map"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Map)}
-          </>
-        } 
-      />
-      <Route 
-        path="/chat"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Chat)}
-          </>
-        } 
-      />
-      <Route 
-        path="/editor"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Editor)}
-          </>
-        }
-      />
-      <Route 
-        path="/calendar"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(Calendar)}
-          </>
-        }
-      />
-      <Route 
-        path="/ai"
-        element={
-          <>
-            <Header />
-            {wrapWithScrollSection(AI)}
-          </>
-        }   
-      />
+      <Route path="/login" element={<><Header />{wrapWithScrollSection(Login)}</>} />
+      <Route path="/" element={<MainRoute />} />
+      <Route path="/payments" element={<><Header />{wrapWithScrollSection(Payments)}</>} />
+      <Route path="/map" element={<><Header />{wrapWithScrollSection(Map)}</>} />
+      <Route path="/chat" element={<><Header />{wrapWithScrollSection(Chat)}</>} />
+      <Route path="/editor" element={<><Header />{wrapWithScrollSection(Editor)}</>} />
+      <Route path="/calendar" element={<><Header />{wrapWithScrollSection(Calendar)}</>} />
+      <Route path="/ai" element={<><Header />{wrapWithScrollSection(AI)}</>} />
     </Routes>
   );
 }
