@@ -1,6 +1,7 @@
 // App.jsx
 import React, { useEffect, useRef } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';  // useLocation 추가
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Header from './components/layout/header';
 import Main from './components/pages/main';
 import SecondSection from './components/pages/secondSection';
@@ -18,11 +19,15 @@ import Editor from './components/pages/editor';
 import Calendar from './components/pages/calendar';
 import AI from './components/pages/ai';
 import './styles/smoothScroll.css';
+import './styles/pageTransition.css';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
+  /* eslint-disable-next-line no-unused-vars */
   const sectionsRef = useRef([]);
-  const location = useLocation(); 
+  const location = useLocation();
+  const functionPages = ['/login', '/payments', '/map', '/chat', '/editor', '/calendar', '/ai'];
+  /* eslint-disable-next-line no-unused-vars */
+  const isFunction = functionPages.includes(location.pathname);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,12 +40,12 @@ function App() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]); 
+  }, [location.pathname]);
 
   useEffect(() => {
     let isScrolling = false;
     let lastScrollTop = 0;
-    const scrollThreshold = 3000; // 스크롤 민감도 여기서 설정하세요
+    const scrollThreshold = 3000;
     const scrollDelay = 1500;
 
     const preventContextMenu = (e) => {
@@ -113,7 +118,6 @@ function App() {
       requestAnimationFrame(() => handleScroll(e));
     };
 
-    // 이벤트 리스너
     document.addEventListener('contextmenu', preventContextMenu);
     window.addEventListener('scroll', throttledHandleScroll);
     
@@ -123,7 +127,6 @@ function App() {
       img.addEventListener('contextmenu', preventSave);
     });
 
-    // Observer 등록
     setTimeout(() => {
       document.querySelectorAll('.scroll-section').forEach(section => {
         observer.observe(section);
@@ -139,7 +142,7 @@ function App() {
       });
       observer.disconnect();
     };
-  }, [location.pathname]);  // location이 변경될 때마다 effect 재실행
+  }, [location.pathname]);
 
   const wrapWithScrollSection = (Component) => (
     <div className="scroll-section">
@@ -163,16 +166,85 @@ function App() {
     </>
   );
 
+  const FunctionPageWrapper = ({ children }) => (
+    <>
+      <div className="logo-only">
+        <Header />
+      </div>
+      <TransitionGroup>
+        <CSSTransition
+          key={location.pathname}
+          timeout={300}
+          classNames="page"
+          unmountOnExit
+        >
+          <div className="page">
+            {children}
+          </div>
+        </CSSTransition>
+      </TransitionGroup>
+    </>
+  );
+
   return (
     <Routes>
-      <Route path="/login" element={<><Header />{wrapWithScrollSection(Login)}</>} />
       <Route path="/" element={<MainRoute />} />
-      <Route path="/payments" element={<><Header />{wrapWithScrollSection(Payments)}</>} />
-      <Route path="/map" element={<><Header />{wrapWithScrollSection(Map)}</>} />
-      <Route path="/chat" element={<><Header />{wrapWithScrollSection(Chat)}</>} />
-      <Route path="/editor" element={<><Header />{wrapWithScrollSection(Editor)}</>} />
-      <Route path="/calendar" element={<><Header />{wrapWithScrollSection(Calendar)}</>} />
-      <Route path="/ai" element={<><Header />{wrapWithScrollSection(AI)}</>} />
+      <Route 
+        path="/login" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(Login)}
+          </FunctionPageWrapper>
+        } 
+      />
+      <Route 
+        path="/payments" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(Payments)}
+          </FunctionPageWrapper>
+        } 
+      />
+      <Route 
+        path="/map" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(Map)}
+          </FunctionPageWrapper>
+        } 
+      />
+      <Route 
+        path="/chat" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(Chat)}
+          </FunctionPageWrapper>
+        } 
+      />
+      <Route 
+        path="/editor" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(Editor)}
+          </FunctionPageWrapper>
+        } 
+      />
+      <Route 
+        path="/calendar" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(Calendar)}
+          </FunctionPageWrapper>
+        } 
+      />
+      <Route 
+        path="/ai" 
+        element={
+          <FunctionPageWrapper>
+            {wrapWithScrollSection(AI)}
+          </FunctionPageWrapper>
+        } 
+      />
     </Routes>
   );
 }
