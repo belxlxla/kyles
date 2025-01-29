@@ -1,6 +1,5 @@
-// Header.jsx
-import React, { useState, useEffect } from 'react';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Link as ScrollLink, Events, scrollSpy, scroller } from 'react-scroll';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/layout/header.css';
 import Menu from '../../assets/ham.svg';
@@ -9,6 +8,10 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  // activeSection state is used for tracking the current active section
+  // even if not directly rendered, it's used in scroll events and navigation
+  // eslint-disable-next-line no-unused-vars
+  const [activeSection, setActiveSection] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -17,12 +20,18 @@ const Header = () => {
     '/editor', '/calendar', '/ai'
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > window.innerHeight;
-      setScrolled(isScrolled);
-    };
+  const handleScroll = useCallback(() => {
+    const isScrolled = window.scrollY > 100;
+    setScrolled(isScrolled);
+  }, []);
 
+  useEffect(() => {
+    if (location.pathname === '/') {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
       if (window.innerWidth > 768) {
@@ -30,24 +39,45 @@ const Header = () => {
       }
     };
 
+    Events.scrollEvent.register('begin', (to, element) => {
+      setActiveSection(to);
+    });
+    
+    Events.scrollEvent.register('end', (to, element) => {
+      setActiveSection(to);
+    });
+
+    scrollSpy.update();
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     handleResize();
 
     return () => {
+      Events.scrollEvent.remove('begin');
+      Events.scrollEvent.remove('end');
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [handleScroll]);
 
   const handleLogoClick = () => {
-    if (functionalPaths.includes(location.pathname)) {
+    // 모바일 메뉴가 열려있으면 닫기
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+
+    // 현재 경로가 functionalPaths에 포함되어 있거나 메인 페이지가 아닌 경우
+    if (functionalPaths.includes(location.pathname) || location.pathname !== '/') {
       navigate('/');
       return;
     }
-    scroll.scrollToTop({
-      duration: 500,
-      smooth: true
+
+    // 메인 페이지에서는 최상단으로 스크롤
+    setActiveSection('');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
   };
 
@@ -57,6 +87,25 @@ const Header = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
+    });
+  };
+
+  const handleSetActive = (to) => {
+    if (!functionalPaths.includes(location.pathname)) {
+      setActiveSection(to);
+    }
+  };
+
+  const handleLinkClick = (to) => {
+    if (isMobile) {
+      setIsMobileMenuOpen(false);
+    }
+    
+    scroller.scrollTo(to, {
+      duration: 500,
+      smooth: true,
+      offset: -80,
+      spy: true
     });
   };
 
@@ -74,9 +123,7 @@ const Header = () => {
   const toggleMobileMenu = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    requestAnimationFrame(() => {
-      setIsMobileMenuOpen(!isMobileMenuOpen);
-    });
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -103,9 +150,12 @@ const Header = () => {
                 to={item.to}
                 spy={true}
                 smooth={true}
-                offset={90}
-                duration={200}
-                onClick={() => isMobile && setIsMobileMenuOpen(false)}
+                offset={-80}
+                duration={500}
+                isDynamic={true}
+                onSetActive={handleSetActive}
+                onClick={() => handleLinkClick(item.to)}
+                ignoreCancelEvents={false}
               >
                 {item.text}
                 {item.hasB && <b>{item.bText}</b>}

@@ -28,6 +28,7 @@ const Contact = () => {
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCustomDomain, setIsCustomDomain] = useState(false);
+  const [contactError, setContactError] = useState('');
 
   const emailDomains = [
     'gmail.com',
@@ -37,12 +38,66 @@ const Contact = () => {
     'hanmail.net'
   ];
 
+  // 전화번호 패턴 정의
+  const phonePatterns = [
+    /^02-\d{3}-\d{4}$/, // 02-XXX-XXXX
+    /^\d{3}-\d{3}-\d{4}$/, // XXX-XXX-XXXX
+    /^\d{3}-\d{4}-\d{4}$/, // XXX-XXXX-XXXX
+    /^\d{4}-\d{4}-\d{4}$/, // XXXX-XXXX-XXXX
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    if (name === 'contact') {
+      // Remove all non-numeric characters
+      const numericValue = value.replace(/\D/g, '');
+      
+      if (numericValue.length > 11) return; // Limit to 11 digits
+      
+      let formattedNumber = '';
+      if (numericValue.length <= 3) {
+        formattedNumber = numericValue;
+      } else if (numericValue.length <= 7) {
+        const prefix = numericValue.slice(0, 3);
+        const middle = numericValue.slice(3, 7);
+        formattedNumber = `${prefix}-${middle}`;
+      } else {
+        // Format based on first digits and length
+        if (numericValue.startsWith('02')) {
+          // Seoul number (02-XXX-XXXX)
+          formattedNumber = `${numericValue.slice(0, 2)}-${numericValue.slice(2, 5)}-${numericValue.slice(5)}`;
+        } else if (numericValue.length === 11) {
+          // Mobile number (XXX-XXXX-XXXX)
+          formattedNumber = `${numericValue.slice(0, 3)}-${numericValue.slice(3, 7)}-${numericValue.slice(7)}`;
+        } else if (numericValue.length === 12) {
+          // 4-4-4 format (XXXX-XXXX-XXXX)
+          formattedNumber = `${numericValue.slice(0, 4)}-${numericValue.slice(4, 8)}-${numericValue.slice(8)}`;
+        } else {
+          // Default format (XXX-XXX-XXXX)
+          formattedNumber = `${numericValue.slice(0, 3)}-${numericValue.slice(3, 6)}-${numericValue.slice(6)}`;
+        }
+      }
+
+      // Validate the formatted number against patterns
+      const isValidNumber = phonePatterns.some(pattern => pattern.test(formattedNumber));
+      
+      setFormData(prev => ({
+        ...prev,
+        [name]: formattedNumber
+      }));
+
+      if (formattedNumber && !isValidNumber) {
+        setContactError('올바른 전화번호 형식이 아닙니다');
+      } else {
+        setContactError('');
+      }
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
     
     if (errors[name]) {
       setErrors(prev => ({
@@ -76,16 +131,21 @@ const Contact = () => {
     if (!formData.company.trim()) newErrors.company = true; 
     if (!formData.email.trim()) newErrors.email = true;
     if (!formData.emailDomain) newErrors.emailDomain = true;
-    if (!formData.contact.trim()) newErrors.contact = true;
+    if (!formData.contact.trim()) {
+      newErrors.contact = true;
+    } else {
+      const isValidNumber = phonePatterns.some(pattern => pattern.test(formData.contact));
+      if (!isValidNumber) newErrors.contact = true;
+    }
     if (!formData.comments.trim()) newErrors.comments = true;
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return Object.keys(newErrors).length === 0 && !contactError;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    e.stopPropagation(); // 이벤트 전파 중지
+    e.stopPropagation();
     
     if (!validateForm()) return;
     
@@ -112,6 +172,7 @@ const Contact = () => {
     });
     setIsSubmitted(false);
     setIsCustomDomain(false);
+    setContactError('');
   };
 
   const isFormFilled = 
@@ -120,7 +181,8 @@ const Contact = () => {
     formData.email.trim() && 
     formData.emailDomain && 
     formData.contact.trim() && 
-    formData.comments.trim();
+    formData.comments.trim() && 
+    !contactError;
 
   return (
     <div id="contact" className="contact-wrapper">
@@ -144,7 +206,7 @@ const Contact = () => {
           <input
             type="text"
             name="company"
-            placeholder="회사명을 입력해 주세요"
+            placeholder="회사명을 입력해 주세요 (없다면 없음이라고 작성해 주세요)"
             value={formData.company}
             onChange={handleChange}
             className={errors.company ? 'error' : ''}
@@ -157,7 +219,7 @@ const Contact = () => {
             <input
               type="text"
               name="email"
-              placeholder="이메일 주소를 입력해 주세요"
+              placeholder="이메일 아이디를 입력해 주세요"
               value={formData.email}
               onChange={handleChange}
               className={errors.email ? 'error' : ''}
@@ -167,7 +229,7 @@ const Contact = () => {
               <input
                 type="text"
                 name="emailDomain"
-                placeholder="이메일 주소를 입력해 주세요"
+                placeholder="이메일  도메인을 선택해 주세요"
                 value={formData.emailDomain}
                 onChange={handleChange}
                 className={`custom-domain-input ${errors.emailDomain ? 'error' : ''}`}
@@ -180,25 +242,23 @@ const Contact = () => {
                 >
                   {formData.emailDomain || '메일 주소 선택'}
                 </div>
-                {isDropdownOpen && (
-                  <div className="dropdown-options">
-                    {emailDomains.map(domain => (
-                      <div
-                        key={domain}
-                        className="dropdown-option"
-                        onClick={() => handleDomainSelect(domain)}
-                      >
-                        {domain}
-                      </div>
-                    ))}
-                    <div 
-                      className="dropdown-option direct-input"
-                      onClick={() => handleDomainSelect('custom')}
+                <div className={`dropdown-options ${isDropdownOpen ? 'open' : ''}`}>
+                  {emailDomains.map(domain => (
+                    <div
+                      key={domain}
+                      className="dropdown-option"
+                      onClick={() => handleDomainSelect(domain)}
                     >
-                      직접 입력
+                      {domain}
                     </div>
+                  ))}
+                  <div 
+                    className="dropdown-option direct-input"
+                    onClick={() => handleDomainSelect('custom')}
+                  >
+                    직접 입력하기
                   </div>
-                )}
+                </div>
               </div>
             )}
           </div>
@@ -207,15 +267,17 @@ const Contact = () => {
         <div className="form-group">
           <label>Contact</label>
           <input
-            className={`proposal-input ${errors.contact ? 'error' : ''}`}
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            className={`proposal-input ${errors.contact || contactError ? 'error' : ''}`}
+            type="tel"
             name="contact"
-            placeholder="연락처를 입력해주세요"
+            placeholder="연락처 또는 휴대폰 번호를 입력해주세요"
             value={formData.contact}
             onChange={handleChange}
+            maxLength={13}
           />
+          {contactError && (
+            <div className="error-message">{contactError}</div>
+          )}
         </div>
 
         <div className="form-group">
