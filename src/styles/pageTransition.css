@@ -3,6 +3,9 @@
   position: absolute;
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
+  left: 0;
+  right: 0;
 }
 
 .page-enter {
@@ -23,8 +26,14 @@
   transition: opacity 300ms ease-in;
 }
 
-/* 부모 컨테이너에 relative 추가 */
 #root {
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.page-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
 }

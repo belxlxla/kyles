@@ -174,18 +174,20 @@ function App() {
         <div className="logo-only">
           <Header />
         </div>
-        <TransitionGroup>
-          <CSSTransition
-            key={location.key || location.pathname}
-            timeout={300}
-            classNames="page"
-            unmountOnExit
-          >
-            <div className="page">
-              {children}
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
+        <div className="page-container">
+          <TransitionGroup>
+            <CSSTransition
+              key={location.key || location.pathname}
+              timeout={300}
+              classNames="page"
+              unmountOnExit
+            >
+              <div className="page">
+                {children}
+              </div>
+            </CSSTransition>
+          </TransitionGroup>
+        </div> 
       </>
     );
   };
