@@ -37,21 +37,34 @@
     white-space: nowrap;
     }
 
+    @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+    }
+
     .be {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     margin-right: 6px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
     }
 
     .dev {
     font-family: 'Pretendard', sans-serif;
     font-weight: 400;
     margin-right: 6px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.5s;
     }
 
     .name {
     font-family: 'Pretendard', sans-serif;
     font-weight: 700;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 1s;
     }
 
     .description {

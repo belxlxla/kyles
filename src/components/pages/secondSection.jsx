@@ -33,9 +33,11 @@ const SecondSection = () => {
         <div className="intro-text">
           <div className="title-wrapper">
             {/* bella : 폰트 개별 적용 */}
-            <span className="be">BE</span>
-            <span className="dev">개발자</span>
-            <span className="name">양준우</span>
+              <div className="title-wrapper">
+              <span className="be">BE</span>
+              <span className="dev">개발자</span>
+              <span className="name">양준우</span>
+            </div>
           </div>
           <div className="s-description">
             <p>성장과 협업을 좋아하는 <strong>2년차 개발자</strong>입니다.</p>
