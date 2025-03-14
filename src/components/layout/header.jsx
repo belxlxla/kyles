@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link as ScrollLink, Events, scrollSpy, scroller } from 'react-scroll';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/layout/header.css';
@@ -8,12 +8,12 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  // activeSection state is used for tracking the current active section
-  // even if not directly rendered, it's used in scroll events and navigation
+  // activeSection state is used for tracking scroll events and navigation
   // eslint-disable-next-line no-unused-vars
   const [activeSection, setActiveSection] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const scrollTimeoutRef = useRef(null);
   
   const functionalPaths = [
     '/login', '/payments', '/map', '/chat',
@@ -27,7 +27,9 @@ const Header = () => {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      window.scrollTo(0, 0);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 50);
     }
   }, [location.pathname]);
 
@@ -39,6 +41,9 @@ const Header = () => {
       }
     };
 
+    Events.scrollEvent.remove('begin');
+    Events.scrollEvent.remove('end');
+
     Events.scrollEvent.register('begin', (to, element) => {
       setActiveSection(to);
     });
@@ -48,7 +53,6 @@ const Header = () => {
     });
 
     scrollSpy.update();
-
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     handleResize();
@@ -58,36 +62,50 @@ const Header = () => {
       Events.scrollEvent.remove('end');
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
+      
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
     };
   }, [handleScroll]);
 
+  const scrollToTop = (immediate = true) => {
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
+    if (immediate) {
+      window.scrollTo(0, 0);
+    }
+    
+    scrollTimeoutRef.current = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      setActiveSection('');
+      scrollSpy.update();
+    }, 10);
+  };
+
   const handleLogoClick = () => {
-    // 모바일 메뉴가 열려있으면 닫기
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
-
-    // 현재 경로가 functionalPaths에 포함되어 있거나 메인 페이지가 아닌 경우
-    if (functionalPaths.includes(location.pathname) || location.pathname !== '/') {
+    if (location.pathname !== '/') {
       navigate('/');
+      scrollToTop(true);
       return;
     }
-
-    // 메인 페이지에서는 최상단으로 스크롤
+    scrollToTop(true);
     setActiveSection('');
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   };
 
   const handleFunctionClick = () => {
     setIsMobileMenuOpen(false);
     navigate('/login');
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    scrollToTop(true);
   };
 
   const handleSetActive = (to) => {
@@ -100,13 +118,25 @@ const Header = () => {
     if (isMobile) {
       setIsMobileMenuOpen(false);
     }
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    setActiveSection('');
     
-    scroller.scrollTo(to, {
-      duration: 500,
-      smooth: true,
-      offset: -80,
-      spy: true
-    });
+    scrollTimeoutRef.current = setTimeout(() => {
+      scroller.scrollTo(to, {
+        duration: 500,
+        smooth: true,
+        offset: -80,
+        spy: true,
+        ignoreCancelEvents: true
+      });
+      
+      setTimeout(() => {
+        scrollSpy.update();
+        setActiveSection(to);
+      }, 510);
+    }, 10);
   };
 
   const menuItems = !functionalPaths.includes(location.pathname)
@@ -155,7 +185,7 @@ const Header = () => {
                 isDynamic={true}
                 onSetActive={handleSetActive}
                 onClick={() => handleLinkClick(item.to)}
-                ignoreCancelEvents={false}
+                ignoreCancelEvents={true}
               >
                 {item.text}
                 {item.hasB && <b>{item.bText}</b>}
