@@ -47,6 +47,10 @@ function App() {
     let lastScrollTop = 0;
     const scrollThreshold = 5000;
     const scrollDelay = 5500;
+    let lastWheelTime = 0;
+    let isMouseWheel = false;
+    let wheelDelta = 0;
+    const wheelThreshold = 100;
 
     const preventContextMenu = (e) => {
       if (e.target.tagName === 'IMG') {
@@ -78,13 +82,61 @@ function App() {
       }
     );
 
+    const handleWheel = (e) => {
+      if (document.activeElement.tagName === 'INPUT' || 
+          document.activeElement.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      const now = Date.now();
+      isMouseWheel = true;
+      wheelDelta += e.deltaY;
+
+      if (now - lastWheelTime < 200) {
+        if (Math.abs(wheelDelta) > wheelThreshold && !isScrolling) {
+          const direction = wheelDelta > 0 ? 1 : -1;
+          scrollToNextSection(direction);
+          wheelDelta = 0;
+        }
+      } else {
+        wheelDelta = e.deltaY;
+      }
+      
+      lastWheelTime = now;
+    };
+
+    const scrollToNextSection = (direction) => {
+      isScrolling = true;
+      const sections = Array.from(document.querySelectorAll('.scroll-section'));
+      const currentSection = sections.findIndex(section => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom > 0;
+      });
+
+      const nextSectionIndex = currentSection + direction;
+      if (nextSectionIndex >= 0 && nextSectionIndex < sections.length) {
+        sections[nextSectionIndex].scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+
+      setTimeout(() => {
+        isScrolling = false;
+        lastScrollTop = window.scrollY;
+      }, scrollDelay);
+    };
+
     const handleScroll = () => {
       if (document.activeElement.tagName === 'INPUT' || 
           document.activeElement.tagName === 'TEXTAREA') {
         return;
       }
 
-      if (isScrolling) return;
+      if (isScrolling || isMouseWheel) {
+        isMouseWheel = false;
+        return;
+      }
 
       const currentScrollTop = window.scrollY;
       const scrollDelta = Math.abs(currentScrollTop - lastScrollTop);
@@ -93,24 +145,7 @@ function App() {
         isScrolling = true;
         
         const direction = currentScrollTop > lastScrollTop ? 1 : -1;
-        const sections = Array.from(document.querySelectorAll('.scroll-section'));
-        const currentSection = sections.findIndex(section => {
-          const rect = section.getBoundingClientRect();
-          return rect.top <= 0 && rect.bottom > 0;
-        });
-
-        const nextSectionIndex = currentSection + direction;
-        if (nextSectionIndex >= 0 && nextSectionIndex < sections.length) {
-          sections[nextSectionIndex].scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-
-        setTimeout(() => {
-          isScrolling = false;
-          lastScrollTop = window.scrollY;
-        }, scrollDelay);
+        scrollToNextSection(direction);
       }
     };
 
@@ -120,6 +155,7 @@ function App() {
 
     document.addEventListener('contextmenu', preventContextMenu);
     window.addEventListener('scroll', throttledHandleScroll);
+    window.addEventListener('wheel', handleWheel, { passive: true });
     
     const images = document.querySelectorAll('img:not(.nav-button img)');
     images.forEach(img => {
@@ -136,6 +172,7 @@ function App() {
     return () => {
       document.removeEventListener('contextmenu', preventContextMenu);
       window.removeEventListener('scroll', throttledHandleScroll);
+      window.removeEventListener('wheel', handleWheel);
       images.forEach(img => {
         img.removeEventListener('touchstart', preventSave);
         img.removeEventListener('contextmenu', preventSave);
