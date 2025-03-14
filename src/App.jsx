@@ -45,8 +45,8 @@ function App() {
   useEffect(() => {
     let isScrolling = false;
     let lastScrollTop = 0;
-    const scrollThreshold = 3000;
-    const scrollDelay = 1500;
+    const scrollThreshold = 5000;
+    const scrollDelay = 5500;
 
     const preventContextMenu = (e) => {
       if (e.target.tagName === 'IMG') {
@@ -178,7 +178,7 @@ function App() {
           <TransitionGroup>
             <CSSTransition
               key={location.key || location.pathname}
-              timeout={300}
+              timeout={100}
               classNames="page"
               unmountOnExit
             >
