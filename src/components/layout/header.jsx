@@ -1,4 +1,6 @@
+// Header.jsx
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { Link as ScrollLink, Events, scrollSpy, scroller } from 'react-scroll';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/layout/header.css';
@@ -8,12 +10,14 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  // activeSection state is used for tracking scroll events and navigation
   // eslint-disable-next-line no-unused-vars
   const [activeSection, setActiveSection] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const scrollTimeoutRef = useRef(null);
+  const adjustmentTimeoutRef = useRef(null);
+  const isScrollingRef = useRef(false);
+  const lastScrollTargetRef = useRef('');
   
   const functionalPaths = [
     '/login', '/payments', '/map', '/chat',
@@ -27,9 +31,9 @@ const Header = () => {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 50);
+      window.scrollTo(0, 0);
+      setActiveSection('');
+      scrollSpy.update();
     }
   }, [location.pathname]);
 
@@ -43,19 +47,22 @@ const Header = () => {
 
     Events.scrollEvent.remove('begin');
     Events.scrollEvent.remove('end');
-
     Events.scrollEvent.register('begin', (to, element) => {
+      isScrollingRef.current = true;
       setActiveSection(to);
     });
     
     Events.scrollEvent.register('end', (to, element) => {
+      isScrollingRef.current = false;
       setActiveSection(to);
+      scrollSpy.update();
     });
 
-    scrollSpy.update();
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
     handleResize();
+
+    scrollSpy.update();
 
     return () => {
       Events.scrollEvent.remove('begin');
@@ -66,77 +73,122 @@ const Header = () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
+      
+      if (adjustmentTimeoutRef.current) {
+        clearTimeout(adjustmentTimeoutRef.current);
+      }
     };
   }, [handleScroll]);
 
-  const scrollToTop = (immediate = true) => {
+  const cleanupScrolling = () => {
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
     
-    if (immediate) {
-      window.scrollTo(0, 0);
+    if (adjustmentTimeoutRef.current) {
+      clearTimeout(adjustmentTimeoutRef.current);
     }
     
-    scrollTimeoutRef.current = setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+    isScrollingRef.current = false;
+  };
+
+  const scrollToElement = (elementId, immediate = false) => {
+    cleanupScrolling();
+    
+    lastScrollTargetRef.current = elementId;
+    const targetElement = document.getElementById(elementId);
+    
+    if (!targetElement) return;
+    
+    const headerOffset = 80;
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: immediate ? 'auto' : 'smooth'
+    });
+    
+    setActiveSection(elementId);
+    
+    adjustmentTimeoutRef.current = setTimeout(() => {
+      if (lastScrollTargetRef.current !== elementId) return;
       
-      setActiveSection('');
+      const newPosition = targetElement.getBoundingClientRect().top;
+  
+      if (Math.abs(newPosition - headerOffset) > 2) {
+        const adjustedPosition = window.pageYOffset + newPosition - headerOffset;
+        
+        window.scrollTo({
+          top: adjustedPosition,
+          behavior: 'auto'
+        });
+        
+        setTimeout(() => {
+          scrollSpy.update();
+          setActiveSection(elementId);
+        }, 50);
+      }
+    }, immediate ? 50 : 600);
+  };
+
+  const scrollToTop = (immediate = false) => {
+    cleanupScrolling();
+    lastScrollTargetRef.current = '';
+    
+    window.scrollTo({
+      top: 0,
+      behavior: immediate ? 'auto' : 'smooth'
+    });
+    
+    setActiveSection('');
+    
+    scrollTimeoutRef.current = setTimeout(() => {
       scrollSpy.update();
-    }, 10);
+    }, immediate ? 50 : 500);
   };
 
   const handleLogoClick = () => {
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
+
     if (location.pathname !== '/') {
       navigate('/');
-      scrollToTop(true);
+      setTimeout(() => {
+        scrollToTop(true);
+      }, 50);
       return;
     }
-    scrollToTop(true);
-    setActiveSection('');
+    
+    scrollToTop(false);
   };
 
   const handleFunctionClick = () => {
     setIsMobileMenuOpen(false);
     navigate('/login');
-    scrollToTop(true);
+    setTimeout(() => {
+      scrollToTop(true);
+    }, 50);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleSetActive = (to) => {
     if (!functionalPaths.includes(location.pathname)) {
       setActiveSection(to);
     }
   };
 
-  const handleLinkClick = (to) => {
+  const handleLinkClick = (to, e) => {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+    
     if (isMobile) {
       setIsMobileMenuOpen(false);
     }
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-    setActiveSection('');
     
-    scrollTimeoutRef.current = setTimeout(() => {
-      scroller.scrollTo(to, {
-        duration: 500,
-        smooth: true,
-        offset: -80,
-        spy: true,
-        ignoreCancelEvents: true
-      });
-      
-      setTimeout(() => {
-        scrollSpy.update();
-        setActiveSection(to);
-      }, 510);
-    }, 10);
+    scrollToElement(to, false);
   };
 
   const menuItems = !functionalPaths.includes(location.pathname)
@@ -179,12 +231,12 @@ const Header = () => {
                 activeClass="active"
                 to={item.to}
                 spy={true}
-                smooth={true}
+                smooth={false}
                 offset={-80}
-                duration={500}
+                duration={0}
                 isDynamic={true}
                 onSetActive={handleSetActive}
-                onClick={() => handleLinkClick(item.to)}
+                onClick={(e) => handleLinkClick(item.to, e)}
                 ignoreCancelEvents={true}
               >
                 {item.text}
